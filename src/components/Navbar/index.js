@@ -19,14 +19,14 @@ const GuildSeparator = styled.div`
   background: ${colors.separator};
 `;
 
-export default () => (
+export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
   <StyledNavbar>
-    <GuildIcon isHome={true} />
+    <GuildIcon isHome={true} selected={!selectedGuildId} onClick={onHomeClick} />
     <OnlineFriendsCounter online={2} />
 
     <GuildSeparator />
 
-    <GuildIcon name="t" />
-    <GuildIcon name="JA" selected={true} />
+    <GuildIcon name="t" selected={selectedGuildId === 't'} onClick={() => onGuildClick('t')} />
+    <GuildIcon name="JA" selected={selectedGuildId === 'JA'} onClick={() => onGuildClick('JA')} />
   </StyledNavbar>
 );

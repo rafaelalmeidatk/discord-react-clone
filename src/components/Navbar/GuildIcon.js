@@ -40,14 +40,14 @@ const HomeIcon = styled(DiscordIcon)`
   padding: 5px;
 `;
 
-export default ({ name, icon, selected, isHome }) => {
+export default ({ name, icon, selected, isHome, onClick }) => {
   let content = name;
   if (isHome) {
     content = <HomeIcon />;
   }
 
   return (
-    <StyledGuildIcon selected={selected} className="selected">
+    <StyledGuildIcon selected={selected} className="selected" onClick={onClick}>
       {content}
     </StyledGuildIcon>
   );

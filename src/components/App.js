@@ -2,7 +2,9 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Navbar from './Navbar';
+import Channels from './Channels';
 import Home from './Home';
+import Chat from './Chat';
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -29,6 +31,7 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
+    selectedGuildId: null,
     currentArea: {
       type: 'HOME'
     }
@@ -39,15 +42,33 @@ class App extends React.Component {
     if (currentArea.type === 'HOME') {
       return Home;
     }
+    if (currentArea.type === 'CHAT') {
+      return Chat;
+    }
+  };
+
+  handleHomeClick = () => {
+    this.setState({ selectedGuildId: null, currentArea: { type: 'HOME' } });
+  };
+
+  handleGuildClick = guildId => {
+    this.setState({ selectedGuildId: guildId, currentArea: { type: 'CHAT' } });
   };
 
   render() {
+    const { selectedGuildId } = this.state;
     const ContentComponent = this.getContentComponent();
+
     return (
       <StyledApp>
         <GlobalStyle />
 
-        <Navbar />
+        <Navbar
+          onHomeClick={this.handleHomeClick}
+          onGuildClick={this.handleGuildClick}
+          selectedGuildId={selectedGuildId}
+        />
+        <Channels header={<div>hello</div>} />
         <ContentComponent className="appContent" />
       </StyledApp>
     );
