@@ -7,6 +7,11 @@ import Home from './Home';
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
     height: 100%;
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
 `;
 
@@ -14,6 +19,10 @@ const StyledApp = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+
+  .appContent {
+    flex: 1 1 auto;
+  }
 `;
 
 class App extends React.Component {
@@ -26,17 +35,18 @@ class App extends React.Component {
   getContentComponent = () => {
     const { currentArea } = this.state;
     if (currentArea.type === 'HOME') {
-      return <Home />;
+      return Home;
     }
   };
 
   render() {
+    const ContentComponent = this.getContentComponent();
     return (
       <StyledApp>
         <GlobalStyle />
-        
+
         <Navbar />
-        {this.getContentComponent()}
+        <ContentComponent className="appContent" />
       </StyledApp>
     );
   }

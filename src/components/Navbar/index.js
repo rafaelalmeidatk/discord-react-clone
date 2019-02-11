@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import colors from '../../utils/colors'
+import colors from '../../utils/colors';
+import GuildIcon from './GuildIcon';
+import OnlineFriendsCounter from './OnlineFriendsCounter';
 
 const StyledNavbar = styled.div`
   width: 70px;
@@ -11,18 +13,20 @@ const StyledNavbar = styled.div`
   align-items: center;
 `;
 
-const GuildIcon = styled.div`
-  width: 50px;
-  height: 50px;
-  background: ${colors.grayNormal};
-  border-radius: 50%;
-  margin: 10px 0;
+const GuildSeparator = styled.div`
+  height: 2px;
+  width: 30px;
+  background: ${colors.separator};
 `;
 
 export default () => (
   <StyledNavbar>
-    <GuildIcon />
-    <GuildIcon />
-    <GuildIcon />
+    <GuildIcon isHome={true} />
+    <OnlineFriendsCounter online={2} />
+
+    <GuildSeparator />
+
+    <GuildIcon name="A" />
+    <GuildIcon name="JA" selected={true} />
   </StyledNavbar>
 );
