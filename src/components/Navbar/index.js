@@ -26,7 +26,7 @@ export default () => (
 
     <GuildSeparator />
 
-    <GuildIcon name="A" />
+    <GuildIcon name="t" />
     <GuildIcon name="JA" selected={true} />
   </StyledNavbar>
 );

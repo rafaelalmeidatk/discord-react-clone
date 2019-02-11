@@ -6,6 +6,8 @@ import Home from './Home';
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
+    font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
     height: 100%;
     box-sizing: border-box;
   }
