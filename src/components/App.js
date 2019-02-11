@@ -8,8 +8,8 @@ import Chat from './Chat';
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
-    font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 400;
+    font-family: Catamaran, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 500;
     height: 100%;
     box-sizing: border-box;
   }
@@ -31,9 +31,9 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
-    selectedGuildId: null,
+    selectedGuildId: 't',
     currentArea: {
-      type: 'HOME'
+      type: 'CHAT'
     }
   };
 
@@ -68,7 +68,7 @@ class App extends React.Component {
           onGuildClick={this.handleGuildClick}
           selectedGuildId={selectedGuildId}
         />
-        <Channels header={<div>hello</div>} />
+        <Channels header={"testserver2"} />
         <ContentComponent className="appContent" />
       </StyledApp>
     );
