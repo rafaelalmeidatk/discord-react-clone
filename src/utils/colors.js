@@ -9,5 +9,6 @@ export default {
   grayDarker: '#252729',
   separator: '#2f3136',
 
-  channelSelected: 'rgba(79,84,92,.6)'
+  channelSelected: 'rgba(79,84,92,.6)',
+  channelHoveredText: '#b9bbbe'
 };

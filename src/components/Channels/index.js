@@ -15,10 +15,13 @@ const StyledHeader = styled.div`
 
 const StyledChannels = styled.div`
   width: 240px;
-  padding-right: 8px;
   display: flex;
   flex-direction: column;
   background: ${colors.grayNormal};
+`;
+
+const StyledContent = styled.div`
+  padding-right: 8px;
 `;
 
 class Channels extends React.Component {
@@ -28,10 +31,12 @@ class Channels extends React.Component {
       <StyledChannels>
         <StyledHeader>{header}</StyledHeader>
 
-        {categories &&
-          categories.map(category => (
-            <Category key={category.id} name={category.name} channels={category.channels} />
-          ))}
+        <StyledContent>
+          {categories &&
+            categories.map(category => (
+              <Category key={category.id} name={category.name} channels={category.channels} />
+            ))}
+        </StyledContent>
       </StyledChannels>
     );
   }

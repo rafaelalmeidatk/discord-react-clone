@@ -10,9 +10,17 @@ const StyledChannel = styled.div`
   height: 32px;
   background-color: ${props => (props.isSelected ? colors.channelSelected : 0)};
   border-radius: 3px;
-
+  cursor: pointer;
   display: flex;
   align-items: center;
+
+  :hover {
+    background-color: ${colors.grayLight};
+    
+    span {
+      color: ${colors.channelHoveredText};
+    }
+  }
 `;
 
 export default ({ name, isSelected }) => (
