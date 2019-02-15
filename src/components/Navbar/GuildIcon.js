@@ -8,6 +8,8 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
   width: 50px;
   height: 50px;
   background: ${props => (props.selected ? colors.primary : colors.grayNormal)};
+  background-image: ${props => props.icon && `url(${props.icon})`};
+  background-size: cover;
   border-radius: ${props => (props.selected ? '15px' : '50%')};
   transition: 0.3s ease;
   display: flex;
@@ -17,7 +19,7 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
   color: #fff;
 
   :hover {
-    background: ${colors.primary};
+    background-color: ${colors.primary};
     border-radius: 15px;
   }
 
@@ -47,8 +49,8 @@ export default ({ name, icon, selected, isHome, onClick }) => {
   }
 
   return (
-    <StyledGuildIcon selected={selected} className="selected" onClick={onClick}>
-      {content}
+    <StyledGuildIcon selected={selected} icon={icon} onClick={onClick}>
+      {!icon ? content : ''}
     </StyledGuildIcon>
   );
 };

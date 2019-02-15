@@ -4,6 +4,8 @@ import colors from '../../utils/colors';
 import GuildIcon from './GuildIcon';
 import OnlineFriendsCounter from './OnlineFriendsCounter';
 
+import data from '../../data';
+
 const StyledNavbar = styled.div`
   width: 70px;
   height: 100%;
@@ -22,11 +24,18 @@ const GuildSeparator = styled.div`
 export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
   <StyledNavbar>
     <GuildIcon isHome={true} selected={!selectedGuildId} onClick={onHomeClick} />
-    <OnlineFriendsCounter online={2} />
+    <OnlineFriendsCounter online={data.friendsOnlineCount} />
 
     <GuildSeparator />
 
-    <GuildIcon name="t" selected={selectedGuildId === 't'} onClick={() => onGuildClick('t')} />
-    <GuildIcon name="JA" selected={selectedGuildId === 'JA'} onClick={() => onGuildClick('JA')} />
+    {data.guilds.map(guild => (
+      <GuildIcon
+        key={guild.id}
+        name={guild.initials}
+        icon={guild.icon}
+        selected={selectedGuildId === guild.id}
+        onClick={() => onGuildClick(guild.id)}
+      />
+    ))}
   </StyledNavbar>
 );

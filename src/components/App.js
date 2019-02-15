@@ -6,6 +6,8 @@ import Channels from './Channels';
 import Home from './Home';
 import Chat from './Chat';
 
+import data from '../data';
+
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
     font-family: Catamaran, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -31,7 +33,7 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
-    selectedGuildId: 't',
+    selectedGuildId: 1111,
     currentArea: {
       type: 'CHAT'
     }
@@ -45,6 +47,22 @@ class App extends React.Component {
     if (currentArea.type === 'CHAT') {
       return Chat;
     }
+  };
+
+  getSelectedGuild = () => {
+    const { selectedGuildId } = this.state;
+    return selectedGuildId ? data.guilds.find(g => g.id === selectedGuildId) : null;
+  };
+
+  getChannelsHeaderContent = () => {
+    const { selectedGuildId } = this.state;
+
+    return selectedGuildId ? this.getSelectedGuild().name : 'textbox here soon';
+  };
+
+  getGuildCategories = () => {
+    const guild = this.getSelectedGuild();
+    return guild ? guild.categories : null;
   };
 
   handleHomeClick = () => {
@@ -68,7 +86,7 @@ class App extends React.Component {
           onGuildClick={this.handleGuildClick}
           selectedGuildId={selectedGuildId}
         />
-        <Channels header={"testserver2"} />
+        <Channels header={this.getChannelsHeaderContent()} categories={this.getGuildCategories()} />
         <ContentComponent className="appContent" />
       </StyledApp>
     );

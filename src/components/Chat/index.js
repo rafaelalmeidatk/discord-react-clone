@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/colors';
 import ContentHeader from '../ContentHeader';
-import HeaderChannelName from './HeaderChannelName';
+import ChannelName from '../ChannelName';
 
 const StyledHome = styled.div`
   background: ${colors.grayLight};
@@ -14,7 +14,7 @@ class Home extends React.Component {
 
     return (
       <StyledHome className={className}>
-        <ContentHeader content={<HeaderChannelName name={'general'} />} />
+        <ContentHeader content={<ChannelName name={'general'} isHeader textColor="#fff" />} />
         hey chat
       </StyledHome>
     );
