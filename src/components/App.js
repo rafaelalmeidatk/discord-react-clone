@@ -76,6 +76,7 @@ class App extends React.Component {
   render() {
     const { selectedGuildId } = this.state;
     const ContentComponent = this.getContentComponent();
+    const selectedGuild = this.getSelectedGuild();
 
     return (
       <StyledApp>
@@ -87,7 +88,7 @@ class App extends React.Component {
           selectedGuildId={selectedGuildId}
         />
         <Channels header={this.getChannelsHeaderContent()} categories={this.getGuildCategories()} />
-        <ContentComponent className="appContent" />
+        <ContentComponent className="appContent" channelName={"#general"} />
       </StyledApp>
     );
   }
