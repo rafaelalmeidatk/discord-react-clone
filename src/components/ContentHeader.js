@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledContentHeader = styled.div`
   height: 48px;
+  flex: 0 0 auto;
   padding: 0 8px 0 12px;
   display: flex;
   align-items: center;
