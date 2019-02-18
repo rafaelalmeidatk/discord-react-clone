@@ -19,7 +19,7 @@ class Home extends React.Component {
 
     return (
       <StyledHome className={className}>
-        <ContentHeader content={<ChannelName name={'general'} isHeader textColor="#fff" />} />
+        <ContentHeader content={<ChannelName name={channelName} isHeader textColor="#fff" />} />
 
         <MessagesWrapper />
         <NewMessageWrapper channelName={channelName} />

@@ -40,7 +40,7 @@ export default ({ channelName }) => (
 
     <StyledDivider />
 
-    <StyledTextarea rows={1} placeholder={`Message ${channelName}`} />
+    <StyledTextarea rows={1} placeholder={`Message #${channelName}`} />
 
     <NewMessageButtons />
   </StyledNewMessageForm>

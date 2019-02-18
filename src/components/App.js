@@ -66,10 +66,16 @@ class App extends React.Component {
     return guild ? guild.categories : null;
   };
 
-  getGuildSelectedChannelId = () => {
+  getGuildSelectedChannel = () => {
     const guild = this.getSelectedGuild();
     if (!guild) return null;
-    return this.state.selectedChannelsId[guild.id] || guild.welcomeChannelId;
+
+    const categoriesChannels = guild.categories.map(c => c.channels);
+    // Here we could use flat() to merge the channels but it is still experimental
+    const channels = [].concat(...categoriesChannels);
+
+    const id = this.state.selectedChannelsId[guild.id] || guild.welcomeChannelId;
+    return channels.find(channel => channel.id === id);
   };
 
   handleHomeClick = () => {
@@ -93,6 +99,7 @@ class App extends React.Component {
     const { selectedGuildId } = this.state;
     const ContentComponent = this.getContentComponent();
     const selectedGuild = this.getSelectedGuild();
+    const selectedChannel = this.getGuildSelectedChannel();
 
     return (
       <StyledApp>
@@ -107,10 +114,10 @@ class App extends React.Component {
           header={this.getChannelsHeaderContent()}
           categories={this.getGuildCategories()}
           guildId={selectedGuild.id}
-          selectedChannelId={this.getGuildSelectedChannelId()}
+          selectedChannelId={selectedChannel && selectedChannel.id}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent className="appContent" channelName={'#general'} />
+        <ContentComponent className="appContent" channelName={selectedChannel.name} />
       </StyledApp>
     );
   }
