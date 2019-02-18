@@ -16,6 +16,7 @@ export default {
       name: 'Reactiflux',
       initials: 'R',
       icon: 'https://cdn.discordapp.com/icons/102860784329052160/109fd014c718f40110c4a182f105ca71.webp',
+      welcomeChannelId: 111123,
       categories: [
         {
           id: 11112,
@@ -42,6 +43,7 @@ export default {
       name: 'MonoGame Discord',
       initials: 'MD',
       icon: 'https://cdn.discordapp.com/icons/355231098122272778/38071c8ba123ca294d769e5e4f7e1318.webp',
+      welcomeChannelId: 222224,
       categories: [
         {
           id: 22222,

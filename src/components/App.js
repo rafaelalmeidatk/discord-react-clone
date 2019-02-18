@@ -34,6 +34,7 @@ const StyledApp = styled.div`
 class App extends React.Component {
   state = {
     selectedGuildId: 1111,
+    selectedChannelsId: {},
     currentArea: {
       type: 'CHAT'
     }
@@ -65,12 +66,27 @@ class App extends React.Component {
     return guild ? guild.categories : null;
   };
 
+  getGuildSelectedChannelId = () => {
+    const guild = this.getSelectedGuild();
+    if (!guild) return null;
+    return this.state.selectedChannelsId[guild.id] || guild.welcomeChannelId;
+  };
+
   handleHomeClick = () => {
     this.setState({ selectedGuildId: null, currentArea: { type: 'HOME' } });
   };
 
   handleGuildClick = guildId => {
     this.setState({ selectedGuildId: guildId, currentArea: { type: 'CHAT' } });
+  };
+
+  handleChannelClick = (guildId, channelId) => {
+    this.setState({
+      selectedChannelsId: {
+        ...this.state.selectedChannelsId,
+        [guildId]: channelId
+      }
+    });
   };
 
   render() {
@@ -87,8 +103,14 @@ class App extends React.Component {
           onGuildClick={this.handleGuildClick}
           selectedGuildId={selectedGuildId}
         />
-        <Channels header={this.getChannelsHeaderContent()} categories={this.getGuildCategories()} />
-        <ContentComponent className="appContent" channelName={"#general"} />
+        <Channels
+          header={this.getChannelsHeaderContent()}
+          categories={this.getGuildCategories()}
+          guildId={selectedGuild.id}
+          selectedChannelId={this.getGuildSelectedChannelId()}
+          onChannelClick={this.handleChannelClick}
+        />
+        <ContentComponent className="appContent" channelName={'#general'} />
       </StyledApp>
     );
   }

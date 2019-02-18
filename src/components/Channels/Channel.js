@@ -15,16 +15,16 @@ const StyledChannel = styled.div`
   align-items: center;
 
   :hover {
-    background-color: ${colors.grayLight};
-    
+    background-color: ${props => (props.isSelected ? colors.channelSelected : colors.grayLight)};
+
     span {
-      color: ${colors.channelHoveredText};
+      color: ${props => (props.isSelected ? 0 : colors.channelHoveredText)};
     }
   }
 `;
 
-export default ({ name, isSelected }) => (
-  <StyledChannel isSelected={isSelected}>
+export default ({ name, isSelected, onClick }) => (
+  <StyledChannel isSelected={isSelected} onClick={onClick}>
     <ChannelName name={name} textColor={isSelected && '#fff'} />
   </StyledChannel>
 );

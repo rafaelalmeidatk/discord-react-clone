@@ -26,7 +26,7 @@ const StyledContent = styled.div`
 
 class Channels extends React.Component {
   render() {
-    const { header, categories } = this.props;
+    const { header, categories, guildId, selectedChannelId, onChannelClick } = this.props;
     return (
       <StyledChannels>
         <StyledHeader>{header}</StyledHeader>
@@ -34,7 +34,14 @@ class Channels extends React.Component {
         <StyledContent>
           {categories &&
             categories.map(category => (
-              <Category key={category.id} name={category.name} channels={category.channels} />
+              <Category
+                key={category.id}
+                name={category.name}
+                channels={category.channels}
+                guildId={guildId}
+                selectedChannelId={selectedChannelId}
+                onChannelClick={onChannelClick}
+              />
             ))}
         </StyledContent>
       </StyledChannels>

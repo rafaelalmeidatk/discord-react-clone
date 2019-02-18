@@ -43,7 +43,7 @@ const StyledAddButton = styled.button`
   }
 `;
 
-export default ({ name, channels }) => (
+export default ({ name, channels, guildId, selectedChannelId, onChannelClick }) => (
   <StyledCategory>
     <StyledCategoryHeading>
       <ExpandArrowIcon />
@@ -55,7 +55,12 @@ export default ({ name, channels }) => (
     </StyledCategoryHeading>
 
     {channels.map(channel => (
-      <Channel key={channel.id} name={channel.name} />
+      <Channel
+        key={channel.id}
+        name={channel.name}
+        isSelected={selectedChannelId === channel.id}
+        onClick={() => onChannelClick(guildId, channel.id)}
+      />
     ))}
   </StyledCategory>
 );
