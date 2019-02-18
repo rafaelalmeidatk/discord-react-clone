@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledApp = styled.div`
   display: flex;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 
   .appContent {
@@ -117,7 +117,7 @@ class App extends React.Component {
           selectedChannelId={selectedChannel && selectedChannel.id}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent className="appContent" channelName={selectedChannel.name} />
+        <ContentComponent className="appContent" channelName={selectedChannel.name} guild={selectedGuild} />
       </StyledApp>
     );
   }

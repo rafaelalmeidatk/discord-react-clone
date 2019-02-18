@@ -8,7 +8,6 @@ import data from '../../data';
 
 const StyledNavbar = styled.div`
   width: 70px;
-  height: 100%;
   background: ${colors.grayDarker};
   display: flex;
   flex-direction: column;

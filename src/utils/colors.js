@@ -9,9 +9,13 @@ export default {
   grayDarker: '#252729',
   separator: '#2f3136',
 
-  channelSelected: 'rgba(79,84,92,.6)',
+  channelSelected: 'rgba(79, 84, 92, .6)',
   channelHoveredText: '#b9bbbe',
 
   icon: '#7d7f84',
-  iconHover: '#fff'
+  iconHover: '#fff',
+
+  memberHoverBg: '#36393f',
+  memberOnline: '#b9bbbe',
+  memberStatus: 'rgba(185, 187, 190, .6)'
 };
