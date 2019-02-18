@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import AttachButton from './AttachButton';
 import NewMessageButtons from './NewMessageButtons';
 
-
 const StyledNewMessageForm = styled.form`
   border-radius: 5px;
   background: rgba(114, 118, 125, 0.3);
@@ -35,18 +34,14 @@ const StyledTextarea = styled.textarea`
   width: 100%;
 `;
 
-
-
 export default ({ channelName }) => (
-  <form>
-    <StyledNewMessageForm>
-      <AttachButton />
+  <StyledNewMessageForm>
+    <AttachButton />
 
-      <StyledDivider />
+    <StyledDivider />
 
-      <StyledTextarea rows={1} placeholder={`Message ${channelName}`} />
+    <StyledTextarea rows={1} placeholder={`Message ${channelName}`} />
 
-      <NewMessageButtons/>
-    </StyledNewMessageForm>
-  </form>
+    <NewMessageButtons />
+  </StyledNewMessageForm>
 );
