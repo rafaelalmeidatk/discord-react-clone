@@ -53,7 +53,7 @@ const StyledMember = styled.div`
 
   .member-inner {
     .username {
-      color: ${colors.memberOnline};
+      color: ${colors.memberUsernameOnline};
       font-size: 1em;
     }
 

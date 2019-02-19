@@ -16,6 +16,11 @@ export default {
   iconHover: '#fff',
 
   memberHoverBg: '#36393f',
-  memberOnline: '#b9bbbe',
-  memberStatus: 'rgba(185, 187, 190, .6)'
+  memberUsernameOnline: '#b9bbbe',
+  memberStatus: 'rgba(185, 187, 190, .6)',
+  memberUsernameChat: '#fff',
+
+  messageContent: '#dcddde',
+  messageTime: 'hsla(0, 0%, 100%, .2)',
+  messageDivider: 'hsla(0,0%,100%,.04)'
 };

@@ -26,7 +26,7 @@ export default ({ members }) => (
   <StyledMemberList>
     <StyledRoleName>Online—2</StyledRoleName>
     {members.map(memberId => {
-      const user = data.users.find(u => u.id === memberId);
+      const user = data.users[memberId];
       return <MemberListItem key={user.id} member={user} />;
     })}
   </StyledMemberList>

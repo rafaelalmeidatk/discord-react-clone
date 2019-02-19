@@ -7,7 +7,7 @@ import MessagesWrapper from './MessagesWrapper';
 import NewMessageWrapper from './NewMessageWrapper';
 import MembersList from './MembersList';
 
-const StyledHome = styled.div`
+const StyledChat = styled.div`
   background: ${colors.grayLight};
 
   display: flex;
@@ -25,25 +25,28 @@ const StyledHome = styled.div`
   }
 `;
 
-class Home extends React.Component {
+class Chat extends React.Component {
   render() {
-    const { className, channelName, guild } = this.props;
+    const { className, guild, channel } = this.props;
+
     const { members } = guild;
+    const { name: channelName } = channel;
+    const channelMessages = channel.messages || [];
 
     return (
-      <StyledHome className={className}>
+      <StyledChat className={className}>
         <ContentHeader content={<ChannelName name={channelName} isHeader textColor="#fff" />} />
 
         <div className="content-wrapper">
           <div className="messages-container">
-            <MessagesWrapper />
+            <MessagesWrapper messages={channelMessages} />
             <NewMessageWrapper channelName={channelName} />
           </div>
           <MembersList members={members} />
         </div>
-      </StyledHome>
+      </StyledChat>
     );
   }
 }
 
-export default Home;
+export default Chat;

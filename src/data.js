@@ -13,7 +13,7 @@ export default {
       initials: 'R',
       icon:
         'https://cdn.discordapp.com/icons/102860784329052160/109fd014c718f40110c4a182f105ca71.webp',
-      welcomeChannelId: 111123,
+      welcomeChannelId: 111124,
       categories: [
         {
           id: 11112,
@@ -25,7 +25,76 @@ export default {
             },
             {
               id: 111124,
-              name: 'general'
+              name: 'general',
+              messages: [
+                {
+                  id: 901,
+                  userId: 1,
+                  content: 'Cras enim dolor, vulputate in dui quis, imperdiet feugiat magna',
+                  time: 'Today at 5:17 PM'
+                },
+                {
+                  id: 902,
+                  userId: 1,
+                  content: 'cursus viverra hendrerit',
+                  time: 'Today at 5:17 PM'
+                },
+                {
+                  id: 903,
+                  userId: 2,
+                  content: 'Aliquam sagittis, velit finibus consequat hendrerit, eros',
+                  time: 'Today at 5:18 PM'
+                },
+                {
+                  id: 904,
+                  userId: 1,
+                  content: 'hasellus odio massa, consequat consequat lec',
+                  time: 'Today at 5:17 PM'
+                },
+                {
+                  id: 905,
+                  userId: 1,
+                  content: 'Donec ipsum nisi, fermentum ac velit eget, lacinia aliquet eros',
+                  time: 'Today at 5:17 PM'
+                },
+                {
+                  id: 906,
+                  userId: 1,
+                  content: 'oin vestibulum luctus nunc vel consectetu',
+                  time: 'Today at 5:17 PM'
+                },
+                {
+                  id: 907,
+                  userId: 2,
+                  content: 'porttitor',
+                  time: 'Today at 5:18 PM'
+                },
+
+                {
+                  id: 908,
+                  userId: 2,
+                  content: 'sque fermentum magna non ex rutru',
+                  time: 'Today at 5:18 PM'
+                },
+                {
+                  id: 909,
+                  userId: 2,
+                  content: 'accumsan elit ac',
+                  time: 'Today at 5:18 PM'
+                },
+                {
+                  id: 910,
+                  userId: 2,
+                  content: 'elementum erat',
+                  time: 'Today at 5:18 PM'
+                },
+                {
+                  id: 911,
+                  userId: 3,
+                  content: 'nullam ultrices ornare lobortis',
+                  time: 'Today at 5:18 PM'
+                },
+              ]
             },
             {
               id: 111125,
@@ -84,41 +153,41 @@ export default {
       members: [1, 3, 4, 5]
     }
   ],
-  users: [
-    {
+  users: {
+    1: {
       id: 1,
-      username: 'rafaelameidatk',
+      username: 'rafaelalmeidatk',
       tag: 7126
     },
-    {
+    2: {
       id: 2,
       username: 'dodge',
       tag: 3948
     },
-    {
+    3: {
       id: 3,
       username: 'moustache',
       tag: 5249
     },
-    {
+    4: {
       id: 4,
       username: 'dice',
       tag: 2183
     },
-    {
+    5: {
       id: 5,
       username: 'blender',
       tag: 8613
     },
-    {
+    6: {
       id: 6,
       username: 'freefall',
       tag: 5485
     },
-    {
+    7: {
       id: 7,
       username: 'moist',
       tag: 8007
     }
-  ]
+  }
 };

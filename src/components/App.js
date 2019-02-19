@@ -117,7 +117,11 @@ class App extends React.Component {
           selectedChannelId={selectedChannel && selectedChannel.id}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent className="appContent" channelName={selectedChannel.name} guild={selectedGuild} />
+        <ContentComponent
+          className="appContent"
+          channel={selectedChannel}
+          guild={selectedGuild}
+        />
       </StyledApp>
     );
   }
