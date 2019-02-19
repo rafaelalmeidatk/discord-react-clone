@@ -20,6 +20,7 @@ export default {
   memberStatus: 'rgba(185, 187, 190, .6)',
   memberUsernameChat: '#fff',
 
+  welcomeChannelMessage: '#949494',
   messageContent: '#dcddde',
   messageTime: 'hsla(0, 0%, 100%, .2)',
   messageDivider: 'hsla(0,0%,100%,.04)'

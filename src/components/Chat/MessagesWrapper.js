@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import data from '../../data';
 import { MemberMessageGroup, Message } from './MemberMessage';
+import WelcomeChannelMessage from './WelcomeChannelMessage';
 
 const StyledMessagesWrapper = styled.div`
   flex: 1 1 auto;
@@ -14,7 +15,7 @@ const createMessageGroup = (groupId, member, time, messages) => (
   </MemberMessageGroup>
 );
 
-export default ({ messages }) => {
+export default ({ channelName, messages }) => {
   let lastUserId = messages.length > 0 ? messages[0].userId : null;
   const groupsComponents = [];
   let messagesComponents = [];
@@ -27,7 +28,7 @@ export default ({ messages }) => {
       createMessageGroup(currentGroupId, member, headingGroupMessage.time, messagesComponents)
     );
     messagesComponents = [];
-  }
+  };
 
   messages.forEach((message, index) => {
     const { userId } = message;
@@ -47,5 +48,10 @@ export default ({ messages }) => {
     }
   });
 
-  return <StyledMessagesWrapper>{groupsComponents}</StyledMessagesWrapper>;
+  return (
+    <StyledMessagesWrapper>
+      <WelcomeChannelMessage channelName={channelName} />
+      {groupsComponents}
+    </StyledMessagesWrapper>
+  );
 };
