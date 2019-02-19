@@ -7,7 +7,7 @@ import data from '../../data';
 import MemberListItem from './MemberListItem';
 
 const StyledMemberList = styled.div`
-  background: ${colors.grayDark};
+  background: ${colors.grayNormal};
   width: 240px;
 `;
 

@@ -9,6 +9,7 @@ const StyledContentHeader = styled.div`
   align-items: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   color: #fff;
+  z-index: 99;
 `;
 
 export default ({ content }) => <StyledContentHeader>{content}</StyledContentHeader>;
