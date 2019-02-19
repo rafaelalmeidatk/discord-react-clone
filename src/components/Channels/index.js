@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/colors';
 
+import ScrollableArea from '../ScrollableArea';
 import Category from './Category';
 
 const StyledHeader = styled.div`
@@ -22,6 +23,8 @@ const StyledChannels = styled.div`
 
 const StyledContent = styled.div`
   padding-right: 8px;
+  flex: 1;
+  position: relative;
 `;
 
 class Channels extends React.Component {
@@ -32,6 +35,7 @@ class Channels extends React.Component {
         <StyledHeader>{header}</StyledHeader>
 
         <StyledContent>
+          <ScrollableArea>
           {categories &&
             categories.map(category => (
               <Category
@@ -43,6 +47,7 @@ class Channels extends React.Component {
                 onChannelClick={onChannelClick}
               />
             ))}
+            </ScrollableArea>
         </StyledContent>
       </StyledChannels>
     );

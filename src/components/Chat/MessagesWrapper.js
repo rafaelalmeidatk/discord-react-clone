@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import data from '../../data';
 import { MemberMessageGroup, Message } from './MemberMessage';
 import WelcomeChannelMessage from './WelcomeChannelMessage';
+import ScrollableArea from '../ScrollableArea';
 
 const StyledMessagesWrapper = styled.div`
   flex: 1 1 auto;
+  position: relative;
 `;
 
 const createMessageGroup = (groupId, member, time, messages) => (
@@ -43,15 +45,17 @@ export default ({ channelName, messages }) => {
     messagesComponents.push(<Message key={message.id}>{message.content}</Message>);
     lastUserId = message.userId;
 
-    if (messages.length === index + 1) {
+    if (index + 1 === messages.length) {
       closeMessageGroupAndClearMessages();
     }
   });
 
   return (
     <StyledMessagesWrapper>
-      <WelcomeChannelMessage channelName={channelName} />
-      {groupsComponents}
+      <ScrollableArea>
+        <WelcomeChannelMessage channelName={channelName} />
+        {groupsComponents}
+      </ScrollableArea>
     </StyledMessagesWrapper>
   );
 };

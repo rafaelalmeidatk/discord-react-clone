@@ -19,8 +19,9 @@ const StyledChat = styled.div`
   }
 
   .messages-container {
-    display: flex;
     flex: 1 1 auto;
+
+    display: flex;
     flex-direction: column;
   }
 `;

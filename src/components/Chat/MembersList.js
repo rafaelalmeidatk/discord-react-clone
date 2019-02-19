@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import colors from '../../utils/colors';
 import data from '../../data';
 
+import ScrollableArea from '../ScrollableArea';
 import MemberListItem from './MemberListItem';
 
 const StyledMemberList = styled.div`
   background: ${colors.grayNormal};
   width: 240px;
+
+  position: relative;
 `;
 
 const StyledRoleName = styled.div`
@@ -24,10 +27,12 @@ const StyledRoleName = styled.div`
 
 export default ({ members }) => (
   <StyledMemberList>
-    <StyledRoleName>Online—2</StyledRoleName>
-    {members.map(memberId => {
-      const user = data.users[memberId];
-      return <MemberListItem key={user.id} member={user} />;
-    })}
+    <ScrollableArea>
+      <StyledRoleName>Online—2</StyledRoleName>
+      {members.map(memberId => {
+        const user = data.users[memberId];
+        return <MemberListItem key={user.id} member={user} />;
+      })}
+    </ScrollableArea>
   </StyledMemberList>
 );
