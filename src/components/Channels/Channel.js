@@ -5,7 +5,7 @@ import colors from '../../utils/colors';
 import ChannelName from '../ChannelName';
 
 const StyledChannel = styled.div`
-  margin: 2px 8px 2px 8px;
+  margin: 2px 0 2px 8px;
   padding: 0 8px;
   height: 32px;
   background-color: ${props => (props.isSelected ? colors.channelSelected : 0)};

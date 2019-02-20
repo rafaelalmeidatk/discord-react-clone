@@ -23,5 +23,9 @@ export default {
   welcomeChannelMessage: '#949494',
   messageContent: '#dcddde',
   messageTime: 'hsla(0, 0%, 100%, .2)',
-  messageDivider: 'hsla(0,0%,100%,.04)'
+  messageDivider: 'hsla(0,0%,100%,.04)',
+
+  scrollbarThumbBackground: '#202225',
+  scrollbarTrackBackground: 'rgba(0, 0, 0, 0.1)',
+  scrollbarTinyThumbBackground: 'rgba(32, 34, 37, 0.6)'
 };

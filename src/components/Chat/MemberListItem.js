@@ -5,8 +5,8 @@ import constants from '../../utils/constants';
 import colors from '../../utils/colors';
 
 const StyledMember = styled.div`
-  margin: 0 8px;
-  padding: 1px 8px;
+  margin: 0 0 0 8px;
+  padding: 1px 0 1px 8px;
   height: 40px;
   border-radius: 3px;
   cursor: pointer;

@@ -35,7 +35,7 @@ class Channels extends React.Component {
         <StyledHeader>{header}</StyledHeader>
 
         <StyledContent>
-          <ScrollableArea>
+          <ScrollableArea forceVertical tinyStyle autoHide>
           {categories &&
             categories.map(category => (
               <Category

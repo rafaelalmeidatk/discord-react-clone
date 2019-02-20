@@ -27,7 +27,7 @@ const GuildSeparator = styled.div`
 
 export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
   <StyledNavbar>
-    <ScrollableArea>
+    <ScrollableArea invisible>
       <div className="content">
         <GuildIcon isHome={true} selected={!selectedGuildId} onClick={onHomeClick} />
         <OnlineFriendsCounter online={data.friendsOnlineCount} />

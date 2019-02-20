@@ -27,7 +27,7 @@ const StyledRoleName = styled.div`
 
 export default ({ members }) => (
   <StyledMemberList>
-    <ScrollableArea>
+    <ScrollableArea forceVertical tinyStyle autoHide>
       <StyledRoleName>Online—2</StyledRoleName>
       {members.map(memberId => {
         const user = data.users[memberId];

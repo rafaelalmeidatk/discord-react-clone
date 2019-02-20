@@ -17,15 +17,29 @@ const StyledScrollableArea = styled.div`
     flex: 1 1 auto;
     overflow-y: auto;
     flex-grow: 1;
-    overflow: auto;
 
     /* Firefox fix */
     min-height: 0;
   }
+
+  .scroller.force-vertical {
+    overflow-y: scroll;
+  }
 `;
 
-export default ({ children }) => (
+export default ({ children, forceVertical, tinyStyle, autoHide, invisible }) => (
   <StyledScrollableArea>
-    <div className="scroller">{children}</div>
+    <div
+      className={[
+        'scroller',
+        forceVertical && 'force-vertical',
+        !tinyStyle && 'scrollbar-default',
+        tinyStyle && 'scrollbar-tiny',
+        autoHide && 'scrollbar-autoHide',
+        invisible && 'scrollbar-invisible'
+      ].join(' ')}
+    >
+      {children}
+    </div>
   </StyledScrollableArea>
 );

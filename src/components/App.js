@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
+import ScrollbarStyles from './ScrollbarStyles';
+
 import Navbar from './Navbar';
 import Channels from './Channels';
 import Home from './Home';
@@ -104,6 +106,7 @@ class App extends React.Component {
     return (
       <StyledApp>
         <GlobalStyle />
+        <ScrollbarStyles />
 
         <Navbar
           onHomeClick={this.handleHomeClick}
@@ -117,11 +120,7 @@ class App extends React.Component {
           selectedChannelId={selectedChannel && selectedChannel.id}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent
-          className="appContent"
-          channel={selectedChannel}
-          guild={selectedGuild}
-        />
+        <ContentComponent className="appContent" channel={selectedChannel} guild={selectedGuild} />
       </StyledApp>
     );
   }
