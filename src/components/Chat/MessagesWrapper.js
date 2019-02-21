@@ -17,45 +17,63 @@ const createMessageGroup = (groupId, member, time, messages) => (
   </MemberMessageGroup>
 );
 
-export default ({ channelName, messages }) => {
-  let lastUserId = messages.length > 0 ? messages[0].userId : null;
-  const groupsComponents = [];
-  let messagesComponents = [];
-  let headingGroupMessage = null;
+export default class extends React.Component {
+  bottomElement = React.createRef();
 
-  const closeMessageGroupAndClearMessages = () => {
-    const member = data.users[headingGroupMessage.userId];
-    const currentGroupId = headingGroupMessage.id;
-    groupsComponents.push(
-      createMessageGroup(currentGroupId, member, headingGroupMessage.time, messagesComponents)
-    );
-    messagesComponents = [];
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    this.bottomElement.current.scrollIntoView();
   };
 
-  messages.forEach((message, index) => {
-    const { userId } = message;
+  render() {
+    const { channelName, messages } = this.props;
+    let lastUserId = messages.length > 0 ? messages[0].userId : null;
+    const groupsComponents = [];
+    let messagesComponents = [];
+    let headingGroupMessage = null;
 
-    if (userId !== lastUserId && messagesComponents.length > 0) {
-      closeMessageGroupAndClearMessages();
-    }
+    const closeMessageGroupAndClearMessages = () => {
+      const member = data.users[headingGroupMessage.userId];
+      const currentGroupId = headingGroupMessage.id;
+      groupsComponents.push(
+        createMessageGroup(currentGroupId, member, headingGroupMessage.time, messagesComponents)
+      );
+      messagesComponents = [];
+    };
 
-    if (messagesComponents.length === 0) {
-      headingGroupMessage = message;
-    }
-    messagesComponents.push(<Message key={message.id}>{message.content}</Message>);
-    lastUserId = message.userId;
+    messages.forEach((message, index) => {
+      const { userId } = message;
 
-    if (index + 1 === messages.length) {
-      closeMessageGroupAndClearMessages();
-    }
-  });
+      if (userId !== lastUserId && messagesComponents.length > 0) {
+        closeMessageGroupAndClearMessages();
+      }
 
-  return (
-    <StyledMessagesWrapper>
-      <ScrollableArea>
-        <WelcomeChannelMessage channelName={channelName} />
-        {groupsComponents}
-      </ScrollableArea>
-    </StyledMessagesWrapper>
-  );
-};
+      if (messagesComponents.length === 0) {
+        headingGroupMessage = message;
+      }
+      messagesComponents.push(<Message key={message.id}>{message.content}</Message>);
+      lastUserId = message.userId;
+
+      if (index + 1 === messages.length) {
+        closeMessageGroupAndClearMessages();
+      }
+    });
+
+    return (
+      <StyledMessagesWrapper>
+        <ScrollableArea>
+          <WelcomeChannelMessage channelName={channelName} />
+          {groupsComponents}
+          <div ref={this.bottomElement} />
+        </ScrollableArea>
+      </StyledMessagesWrapper>
+    );
+  }
+}

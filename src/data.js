@@ -3,6 +3,49 @@
  * and be stored in a decent state manager, like Redux or MobX
  */
 
+let nextMessageId = 900;
+const generateRandomMessagesFromRandomUsers = numOfMessages => {
+  const messages = [
+    'Quisque eget sapien scelerisque, sagittis neque sed, rhoncus lacus.',
+    'nam elementum',
+    'cursus viverra hendrerit',
+    'Aliquam sagittis, velit finibus consequat hendrerit, eros',
+    'Donec ipsum nisi, fermentum ac velit eget, lacinia aliquet eros',
+    'oin vestibulum luctus nunc vel consectetu',
+    'porttitor',
+    'sque fermentum magna non ex rutru',
+    'accumsan elit ac',
+    'elementum erat',
+    'nullam ultrices ornare lobortis',
+    'proin quis erat at orci tempor lacinia',
+    'Quisque semper odio arcu',
+    'suspendisse iaculis gravida venenatis',
+    'nunc lacinia orci sapien',
+    'posuere',
+    'dignissim vitae magna',
+    'vitae nibh',
+    'maecenas et imperdiet lectus',
+    'et pulvinar lacus vehicula nec'
+  ];
+
+  const msgs = [];
+
+  for (var i = 0; i < numOfMessages; i++) {
+    const userId = 1 + Math.floor(Math.random() * 6);
+    const rows = 1 + Math.floor(Math.random() * 3);
+    for (var j = 0; j < rows; j++) {
+      msgs.push({
+        id: nextMessageId++,
+        userId,
+        content: messages[Math.floor(Math.random() * (messages.length - 1))],
+        time: 'Today at 5:17 PM'
+      });
+    }
+  }
+
+  return msgs;
+};
+
 export default {
   userId: 1,
   friendsOnlineCount: 2,
@@ -21,84 +64,18 @@ export default {
           channels: [
             {
               id: 111123,
-              name: 'welcome'
+              name: 'welcome',
+              messages: [...generateRandomMessagesFromRandomUsers(3)]
             },
             {
               id: 111124,
               name: 'general',
-              messages: [
-                {
-                  id: 901,
-                  userId: 1,
-                  content: 'Cras enim dolor, vulputate in dui quis, imperdiet feugiat magna',
-                  time: 'Today at 5:17 PM'
-                },
-                {
-                  id: 902,
-                  userId: 1,
-                  content: 'cursus viverra hendrerit',
-                  time: 'Today at 5:17 PM'
-                },
-                {
-                  id: 903,
-                  userId: 2,
-                  content: 'Aliquam sagittis, velit finibus consequat hendrerit, eros',
-                  time: 'Today at 5:18 PM'
-                },
-                {
-                  id: 904,
-                  userId: 1,
-                  content: 'hasellus odio massa, consequat consequat lec',
-                  time: 'Today at 5:17 PM'
-                },
-                {
-                  id: 905,
-                  userId: 1,
-                  content: 'Donec ipsum nisi, fermentum ac velit eget, lacinia aliquet eros',
-                  time: 'Today at 5:17 PM'
-                },
-                {
-                  id: 906,
-                  userId: 1,
-                  content: 'oin vestibulum luctus nunc vel consectetu',
-                  time: 'Today at 5:17 PM'
-                },
-                {
-                  id: 907,
-                  userId: 2,
-                  content: 'porttitor',
-                  time: 'Today at 5:18 PM'
-                },
-
-                {
-                  id: 908,
-                  userId: 2,
-                  content: 'sque fermentum magna non ex rutru',
-                  time: 'Today at 5:18 PM'
-                },
-                {
-                  id: 909,
-                  userId: 2,
-                  content: 'accumsan elit ac',
-                  time: 'Today at 5:18 PM'
-                },
-                {
-                  id: 910,
-                  userId: 2,
-                  content: 'elementum erat',
-                  time: 'Today at 5:18 PM'
-                },
-                {
-                  id: 911,
-                  userId: 3,
-                  content: 'nullam ultrices ornare lobortis',
-                  time: 'Today at 5:18 PM'
-                },
-              ]
+              messages: [...generateRandomMessagesFromRandomUsers(50)]
             },
             {
               id: 111125,
-              name: 'need-help'
+              name: 'need-help',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             }
           ]
         }
@@ -119,15 +96,18 @@ export default {
           channels: [
             {
               id: 222223,
-              name: 'rules'
+              name: 'rules',
+              messages: [...generateRandomMessagesFromRandomUsers(1)]
             },
             {
               id: 222224,
-              name: 'announcements'
+              name: 'announcements',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             },
             {
               id: 222225,
-              name: 'showcase'
+              name: 'showcase',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             }
           ]
         },
@@ -137,15 +117,18 @@ export default {
           channels: [
             {
               id: 222233,
-              name: 'general'
+              name: 'general',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             },
             {
               id: 222234,
-              name: 'c-sharp'
+              name: 'c-sharp',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             },
             {
               id: 222235,
-              name: 'libraries'
+              name: 'libraries',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             }
           ]
         }
