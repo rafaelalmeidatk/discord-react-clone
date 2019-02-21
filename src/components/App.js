@@ -8,6 +8,8 @@ import Channels from './Channels';
 import Home from './Home';
 import Chat from './Chat';
 
+import MemberCardPopup from './MemberCardPopup';
+
 import data from '../data';
 
 const GlobalStyle = createGlobalStyle`
@@ -121,6 +123,12 @@ class App extends React.Component {
           onChannelClick={this.handleChannelClick}
         />
         <ContentComponent className="appContent" channel={selectedChannel} guild={selectedGuild} />
+
+        <MemberCardPopup
+          ref={node => {
+            MemberCardPopup.instance = MemberCardPopup.instance || node;
+          }}
+        />
       </StyledApp>
     );
   }

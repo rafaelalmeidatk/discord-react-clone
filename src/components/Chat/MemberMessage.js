@@ -19,10 +19,10 @@ const StyledMemberMessageGroup = styled.div`
   }
 `;
 
-export const MemberMessageGroup = ({ member, time, children }) => (
+export const MemberMessageGroup = ({ member, time, onMemberClick, children }) => (
   <StyledMemberMessageGroup>
     {React.Children.map(children, (child, index) =>
-      React.cloneElement(child, { member, time, isHeading: index === 0 })
+      React.cloneElement(child, { member, time, isHeading: index === 0, onMemberClick })
     )}
     <div className="divider" />
   </StyledMemberMessageGroup>
@@ -53,6 +53,11 @@ const StyledMessage = styled.div`
 
     .username {
       color: ${colors.memberUsernameChat};
+      cursor: pointer;
+
+      :hover {
+        text-decoration: underline;
+      }
     }
 
     .time {
@@ -75,18 +80,20 @@ const StyledMessage = styled.div`
   }
 `;
 
-export const Message = ({ member, time, children, isHeading }) => (
+export const Message = ({ member, time, children, isHeading, onMemberClick }) => (
   <StyledMessage>
     {isHeading && (
       <div className="header">
-        <div className="avatar-wrapper">
+        <div className="avatar-wrapper" onClick={(e) => onMemberClick(e, member)}>
           <div
             className="avatar"
             style={{ backgroundImage: `url(${member.avatar || constants.defaultAvatar})` }}
           />
         </div>
         <div className="data">
-          <span className="username">{member.username}</span>
+          <span className="username" onClick={(e) => onMemberClick(e, member)}>
+            {member.username}
+          </span>
           <span className="time">{time}</span>
         </div>
       </div>

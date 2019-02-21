@@ -27,5 +27,16 @@ export default {
 
   scrollbarThumbBackground: '#202225',
   scrollbarTrackBackground: 'rgba(0, 0, 0, 0.1)',
-  scrollbarTinyThumbBackground: 'rgba(32, 34, 37, 0.6)'
+  scrollbarTinyThumbBackground: 'rgba(32, 34, 37, 0.6)',
+
+  memberCardHeaderBackground: '#202225',
+  memberCardBackground: '#2f3136',
+  memberCardContent: 'hsla(0,0%,100%,.8)',
+  memberCardUserTag: 'hsla(0, 0%, 100%, 0.6)',
+  memberCardFieldKey: '#72767d',
+  memberCardNoteInput: '#b9bbbe',
+  memberCardFooterBorder: 'rgba(32, 34, 37, .3)',
+
+  proptipLabel: '#43b581',
+  proptipText: 'rgba(255, 255, 255, 0.5)'
 };

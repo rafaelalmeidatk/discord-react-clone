@@ -6,13 +6,15 @@ import { MemberMessageGroup, Message } from './MemberMessage';
 import WelcomeChannelMessage from './WelcomeChannelMessage';
 import ScrollableArea from '../ScrollableArea';
 
+import MemberCardPopup from '../MemberCardPopup';
+
 const StyledMessagesWrapper = styled.div`
   flex: 1 1 auto;
   position: relative;
 `;
 
-const createMessageGroup = (groupId, member, time, messages) => (
-  <MemberMessageGroup key={groupId} member={member} time={time}>
+const createMessageGroup = (groupId, member, time, onMemberClick, messages) => (
+  <MemberMessageGroup key={groupId} member={member} time={time} onMemberClick={onMemberClick}>
     {messages}
   </MemberMessageGroup>
 );
@@ -22,6 +24,12 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.scrollToBottom();
+    setTimeout(() => {
+      MemberCardPopup.show({
+        position: { x: 380, y: 7.703125 },
+        member: { id: 1, username: 'rafaelalmeidatk', tag: 7126 }
+      });
+    }, 100);
   }
 
   componentDidUpdate() {
@@ -30,6 +38,15 @@ export default class extends React.Component {
 
   scrollToBottom = () => {
     this.bottomElement.current.scrollIntoView();
+  };
+
+  handleMemberClick = (element, member) => {
+    const { target } = element;
+    const targetRect = target.getBoundingClientRect();
+    MemberCardPopup.show({
+      position: { x: targetRect.left + targetRect.width + 10, y: targetRect.top },
+      member
+    });
   };
 
   render() {
@@ -43,7 +60,13 @@ export default class extends React.Component {
       const member = data.users[headingGroupMessage.userId];
       const currentGroupId = headingGroupMessage.id;
       groupsComponents.push(
-        createMessageGroup(currentGroupId, member, headingGroupMessage.time, messagesComponents)
+        createMessageGroup(
+          currentGroupId,
+          member,
+          headingGroupMessage.time,
+          this.handleMemberClick,
+          messagesComponents
+        )
       );
       messagesComponents = [];
     };
