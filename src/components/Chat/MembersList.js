@@ -10,6 +10,7 @@ import MemberListItem from './MemberListItem';
 const StyledMemberList = styled.div`
   background: ${colors.grayNormal};
   width: 240px;
+  flex-shrink: 0;
 
   position: relative;
 `;

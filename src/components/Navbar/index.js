@@ -11,6 +11,7 @@ const StyledNavbar = styled.div`
   width: 70px;
   background: ${colors.grayDarker};
   position: relative;
+  flex-shrink: 0;
 
   .content {
     display: flex;

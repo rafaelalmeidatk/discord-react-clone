@@ -5,6 +5,14 @@ import colors from '../../utils/colors';
 import ScrollableArea from '../ScrollableArea';
 import Category from './Category';
 
+const StyledChannels = styled.div`
+  width: 240px;
+  
+  display: flex;
+  flex-direction: column;
+  background: ${colors.grayNormal};
+`;
+
 const StyledHeader = styled.div`
   height: 48px;
   padding: 0 12px 0 16px;
@@ -12,13 +20,6 @@ const StyledHeader = styled.div`
   align-items: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   color: #fff;
-`;
-
-const StyledChannels = styled.div`
-  width: 240px;
-  display: flex;
-  flex-direction: column;
-  background: ${colors.grayNormal};
 `;
 
 const StyledContent = styled.div`

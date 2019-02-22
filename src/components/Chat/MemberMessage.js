@@ -19,10 +19,10 @@ const StyledMemberMessageGroup = styled.div`
   }
 `;
 
-export const MemberMessageGroup = ({ member, time, onMemberClick, children }) => (
+export const MemberMessageGroup = ({ guild, member, time, onMemberClick, children }) => (
   <StyledMemberMessageGroup>
     {React.Children.map(children, (child, index) =>
-      React.cloneElement(child, { member, time, isHeading: index === 0, onMemberClick })
+      React.cloneElement(child, { guild, member, time, isHeading: index === 0, onMemberClick })
     )}
     <div className="divider" />
   </StyledMemberMessageGroup>
@@ -52,7 +52,7 @@ const StyledMessage = styled.div`
     }
 
     .username {
-      color: ${colors.memberUsernameChat};
+      color: ${props => props.usernameColor || colors.memberUsernameChat};
       cursor: pointer;
 
       :hover {
@@ -80,24 +80,35 @@ const StyledMessage = styled.div`
   }
 `;
 
-export const Message = ({ member, time, children, isHeading, onMemberClick }) => (
-  <StyledMessage>
-    {isHeading && (
-      <div className="header">
-        <div className="avatar-wrapper" onClick={(e) => onMemberClick(e, member)}>
-          <div
-            className="avatar"
-            style={{ backgroundImage: `url(${member.avatar || constants.defaultAvatar})` }}
-          />
+export const Message = ({ guild, member, time, children, isHeading, onMemberClick }) => {
+  const firstRoleIdWithColor =
+    member.roles &&
+    member.roles.find(roleId => {
+      const role = guild.roles[roleId];
+      return !!role.color;
+    });
+
+  const color = firstRoleIdWithColor && guild.roles[firstRoleIdWithColor].color;
+
+  return (
+    <StyledMessage usernameColor={color}>
+      {isHeading && (
+        <div className="header">
+          <div className="avatar-wrapper" onClick={e => onMemberClick(e, member)}>
+            <div
+              className="avatar"
+              style={{ backgroundImage: `url(${member.avatar || constants.defaultAvatar})` }}
+            />
+          </div>
+          <div className="data">
+            <span className="username" onClick={e => onMemberClick(e, member)}>
+              {member.username}
+            </span>
+            <span className="time">{time}</span>
+          </div>
         </div>
-        <div className="data">
-          <span className="username" onClick={(e) => onMemberClick(e, member)}>
-            {member.username}
-          </span>
-          <span className="time">{time}</span>
-        </div>
-      </div>
-    )}
-    <div className="content">{children}</div>
-  </StyledMessage>
-);
+      )}
+      <div className="content">{children}</div>
+    </StyledMessage>
+  );
+};

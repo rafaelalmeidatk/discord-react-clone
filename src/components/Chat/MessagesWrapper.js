@@ -13,8 +13,8 @@ const StyledMessagesWrapper = styled.div`
   position: relative;
 `;
 
-const createMessageGroup = (groupId, member, time, onMemberClick, messages) => (
-  <MemberMessageGroup key={groupId} member={member} time={time} onMemberClick={onMemberClick}>
+const createMessageGroup = (groupId, guild, member, time, onMemberClick, messages) => (
+  <MemberMessageGroup key={groupId} guild={guild} member={member} time={time} onMemberClick={onMemberClick}>
     {messages}
   </MemberMessageGroup>
 );
@@ -62,6 +62,7 @@ export default class extends React.Component {
       groupsComponents.push(
         createMessageGroup(
           currentGroupId,
+          guild,
           member,
           headingGroupMessage.time,
           this.handleMemberClick,
