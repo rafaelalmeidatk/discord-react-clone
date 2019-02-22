@@ -80,25 +80,28 @@ export default {
           ]
         }
       ],
-      roles: [
-        {
+      roles: {
+        11: {
           id: 11,
           name: 'Admin',
-          color: 'rgb(231, 76, 60)'
+          color: 'rgb(231, 76, 60)',
+          isSeparated: true
         },
-        {
+        12: {
           id: 12,
           name: 'Moderator',
-          color: 'rgb(230, 126, 34)'
+          color: 'rgb(230, 126, 34)',
+          isSeparated: true
         },
-        {
+        13: {
           id: 13,
           name: 'MVP',
-          color: 'rgb(155, 89, 182)'
+          color: 'rgb(155, 89, 182)',
+          isSeparated: true
         }
-      ],
+      },
       members: [
-        { userId: 1, roles: [11] },
+        { userId: 1, roles: [11, 12] },
         { userId: 2, roles: [11] },
         { userId: 3, roles: [12] },
         { userId: 6, roles: [] },
@@ -156,18 +159,18 @@ export default {
           ]
         }
       ],
-      roles: [
-        {
+      roles: {
+        11: {
           id: 11,
           name: 'Admin',
           color: 'red'
         }
-      ],
+      },
       members: [
         { userId: 1, roles: [11] },
         { userId: 3, roles: [] },
         { userId: 4, roles: [] },
-        { userId: 5, roles: [] },
+        { userId: 5, roles: [] }
       ]
     }
   ],

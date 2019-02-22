@@ -43,7 +43,7 @@ class Chat extends React.Component {
             <MessagesWrapper guild={guild} messages={channelMessages} channelName={channelName} />
             <NewMessageWrapper channelName={channelName} />
           </div>
-          <MembersList members={members} />
+          <MembersList guildRolesList={guild.roles} members={members} />
         </div>
       </StyledChat>
     );

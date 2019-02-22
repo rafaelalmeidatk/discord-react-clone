@@ -53,7 +53,7 @@ const StyledMember = styled.div`
 
   .member-inner {
     .username {
-      color: ${colors.memberUsernameOnline};
+      color: ${props => props.color || colors.memberUsernameOnline};
       font-size: 1em;
     }
 
@@ -64,8 +64,8 @@ const StyledMember = styled.div`
   }
 `;
 
-export default ({ member }) => (
-  <StyledMember>
+export default ({ member, color }) => (
+  <StyledMember color={color}>
     <div className="avatar-wrapper">
       <div
         className="avatar"

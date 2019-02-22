@@ -24,12 +24,6 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.scrollToBottom();
-    setTimeout(() => {
-      MemberCardPopup.show({
-        position: { x: 380, y: 7.703125 },
-        member: { id: 1, username: 'rafaelalmeidatk', tag: 7126, roles: [11, 12, 13] }
-      });
-    }, 100);
   }
 
   componentDidUpdate() {

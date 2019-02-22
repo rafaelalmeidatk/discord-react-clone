@@ -25,14 +25,57 @@ const StyledRoleName = styled.div`
   white-space: nowrap;
 `;
 
-export default ({ members }) => (
-  <StyledMemberList>
-    <ScrollableArea forceVertical tinyStyle autoHide>
-      <StyledRoleName>Online—2</StyledRoleName>
-      {members.map(member => {
-        const user = data.users[member.userId];
-        return <MemberListItem key={user.id} member={user} />;
-      })}
-    </ScrollableArea>
-  </StyledMemberList>
-);
+export default ({ guildRolesList, members }) => {
+  const roleSeparators = { online: { name: 'Online', members: [] } };
+
+  members.forEach(member => {
+    let addedToRole = false;
+
+    member.roles.forEach(roleId => {
+      if (addedToRole) return;
+
+      const role = guildRolesList[roleId];
+
+      if (role.isSeparated) {
+        if (roleSeparators.hasOwnProperty(roleId)) {
+          roleSeparators[roleId].members.push(member);
+        } else {
+          roleSeparators[roleId] = {
+            name: role.name,
+            members: [member],
+            color: role.color
+          };
+        }
+        addedToRole = true;
+      }
+    });
+
+    if (!addedToRole) {
+      roleSeparators['online'].members.push(member);
+    }
+  });
+
+  return (
+    <StyledMemberList>
+      <ScrollableArea forceVertical tinyStyle autoHide>
+        {Object.keys(roleSeparators).map(roleId => (
+          <React.Fragment key={roleId}>
+            <StyledRoleName>
+              {roleSeparators[roleId].name}—{roleSeparators[roleId].members.length}
+            </StyledRoleName>
+            {roleSeparators[roleId].members.map(member => {
+              const user = data.users[member.userId];
+              const firstRoleIdWithColor = member.roles.find(roleId => {
+                const role = guildRolesList[roleId];
+                return !!role.color;
+              });
+
+              const color = firstRoleIdWithColor && guildRolesList[firstRoleIdWithColor].color;
+              return <MemberListItem key={user.id} member={user} color={color} />;
+            })}
+          </React.Fragment>
+        ))}
+      </ScrollableArea>
+    </StyledMemberList>
+  );
+};

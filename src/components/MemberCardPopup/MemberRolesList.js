@@ -41,7 +41,7 @@ const StyledRole = styled.li`
 export default ({ rolesList, memberRoles }) => (
   <StyledRolesList>
     {memberRoles.map(roleId => {
-      const role = rolesList.find(r => r.id === roleId);
+      const role = rolesList[roleId];
 
       return (
         <StyledRole key={roleId} color={role.color}>
