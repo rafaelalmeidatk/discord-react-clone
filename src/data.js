@@ -80,7 +80,30 @@ export default {
           ]
         }
       ],
-      members: [1, 2, 3, 6, 7]
+      roles: [
+        {
+          id: 11,
+          name: 'Admin',
+          color: 'rgb(231, 76, 60)'
+        },
+        {
+          id: 12,
+          name: 'Moderator',
+          color: 'rgb(230, 126, 34)'
+        },
+        {
+          id: 13,
+          name: 'MVP',
+          color: 'rgb(155, 89, 182)'
+        }
+      ],
+      members: [
+        { userId: 1, roles: [11] },
+        { userId: 2, roles: [11] },
+        { userId: 3, roles: [12] },
+        { userId: 6, roles: [] },
+        { userId: 7, roles: [] }
+      ]
     },
     {
       id: 2222,
@@ -133,7 +156,19 @@ export default {
           ]
         }
       ],
-      members: [1, 3, 4, 5]
+      roles: [
+        {
+          id: 11,
+          name: 'Admin',
+          color: 'red'
+        }
+      ],
+      members: [
+        { userId: 1, roles: [11] },
+        { userId: 3, roles: [] },
+        { userId: 4, roles: [] },
+        { userId: 5, roles: [] },
+      ]
     }
   ],
   users: {

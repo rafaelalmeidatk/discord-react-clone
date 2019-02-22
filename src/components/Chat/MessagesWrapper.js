@@ -27,7 +27,7 @@ export default class extends React.Component {
     setTimeout(() => {
       MemberCardPopup.show({
         position: { x: 380, y: 7.703125 },
-        member: { id: 1, username: 'rafaelalmeidatk', tag: 7126 }
+        member: { id: 1, username: 'rafaelalmeidatk', tag: 7126, roles: [11, 12, 13] }
       });
     }, 100);
   }
@@ -50,14 +50,20 @@ export default class extends React.Component {
   };
 
   render() {
-    const { channelName, messages } = this.props;
+    const { channelName, guild, messages } = this.props;
     let lastUserId = messages.length > 0 ? messages[0].userId : null;
     const groupsComponents = [];
     let messagesComponents = [];
     let headingGroupMessage = null;
 
     const closeMessageGroupAndClearMessages = () => {
-      const member = data.users[headingGroupMessage.userId];
+      const userId = headingGroupMessage.userId;
+      const guildMember = guild.members.find(m => m.userId === userId);
+      const member = {
+        ...data.users[headingGroupMessage.userId],
+        roles: guildMember ? guildMember.roles : null
+      };
+
       const currentGroupId = headingGroupMessage.id;
       groupsComponents.push(
         createMessageGroup(

@@ -29,8 +29,8 @@ export default ({ members }) => (
   <StyledMemberList>
     <ScrollableArea forceVertical tinyStyle autoHide>
       <StyledRoleName>Online—2</StyledRoleName>
-      {members.map(memberId => {
-        const user = data.users[memberId];
+      {members.map(member => {
+        const user = data.users[member.userId];
         return <MemberListItem key={user.id} member={user} />;
       })}
     </ScrollableArea>

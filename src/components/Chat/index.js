@@ -40,7 +40,7 @@ class Chat extends React.Component {
 
         <div className="content-wrapper">
           <div className="messages-container">
-            <MessagesWrapper messages={channelMessages} channelName={channelName} />
+            <MessagesWrapper guild={guild} messages={channelMessages} channelName={channelName} />
             <NewMessageWrapper channelName={channelName} />
           </div>
           <MembersList members={members} />

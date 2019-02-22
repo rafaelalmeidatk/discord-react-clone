@@ -125,6 +125,7 @@ class App extends React.Component {
         <ContentComponent className="appContent" channel={selectedChannel} guild={selectedGuild} />
 
         <MemberCardPopup
+          guildRolesList={selectedGuild ? selectedGuild.roles : []}
           ref={node => {
             MemberCardPopup.instance = MemberCardPopup.instance || node;
           }}

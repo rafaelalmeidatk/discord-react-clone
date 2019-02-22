@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import MemberRolesList from './MemberRolesList';
 import colors from '../../utils/colors';
 import constants from '../../utils/constants';
 
 const StyledMemberCard = styled.div`
-  width: 240px;
+  width: 250px;
   background-color: ${colors.memberCardBackground};
+  color: ${colors.memberCardContent};
 
   .header {
     padding: 20px 10px;
@@ -128,7 +130,7 @@ const StyledMessageInput = styled.input`
   height: 36px;
 `;
 
-export default ({ member }) => (
+export default ({ member, guildRolesList }) => (
   <StyledMemberCard>
     <div className="header">
       <div className="avatar-wrapper">
@@ -145,8 +147,14 @@ export default ({ member }) => (
     </div>
 
     <div className="content">
-      <div className="field-key roles-key">Role</div>
-      <div className="field-value roles">dsadsa</div>
+      {member.roles && (
+        <React.Fragment>
+          <div className="field-key roles-key">Role</div>
+          <div className="field-value roles">
+            <MemberRolesList rolesList={guildRolesList} memberRoles={member.roles} />
+          </div>
+        </React.Fragment>
+      )}
 
       <div className="field-key">Note</div>
       <div className="field-value">

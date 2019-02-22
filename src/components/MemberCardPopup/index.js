@@ -30,10 +30,17 @@ export default class MemberCardPopup extends React.Component {
 
   render() {
     const { isPopupVisible, position, member } = this.state;
+    const { guildRolesList } = this.props;
+    
     return (
       <StyledMemberCardPopup>
         {isPopupVisible && (
-          <MemberCardPopupWrapper position={position} member={member} onClose={this.closePopup} />
+          <MemberCardPopupWrapper
+            position={position}
+            member={member}
+            guildRolesList={guildRolesList}
+            onClose={this.closePopup}
+          />
         )}
       </StyledMemberCardPopup>
     );

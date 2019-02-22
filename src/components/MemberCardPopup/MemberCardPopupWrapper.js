@@ -46,10 +46,10 @@ export default class MemberCardPopupWrapper extends React.Component {
   };
 
   render() {
-    const { position, member } = this.props;
+    const { position, member, guildRolesList } = this.props;
     return (
       <StyledMemberCardPopupWrapper ref={this.node} position={position}>
-        <MemberCard member={member} />
+        <MemberCard member={member} guildRolesList={guildRolesList} />
       </StyledMemberCardPopupWrapper>
     );
   }
