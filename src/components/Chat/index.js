@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/colors';
 import ContentHeader from '../ContentHeader';
+import HeaderActionBar from './HeaderActionBar';
 import ChannelName from '../ChannelName';
 import MessagesWrapper from './MessagesWrapper';
 import NewMessageWrapper from './NewMessageWrapper';
@@ -27,6 +28,14 @@ const StyledChat = styled.div`
 `;
 
 class Chat extends React.Component {
+  state = {
+    membersListVisible: true
+  };
+
+  toggleMembersListVisible = () => {
+    this.setState({ membersListVisible: !this.state.membersListVisible });
+  };
+
   render() {
     const { className, guild, channel } = this.props;
 
@@ -36,14 +45,25 @@ class Chat extends React.Component {
 
     return (
       <StyledChat className={className}>
-        <ContentHeader content={<ChannelName name={channelName} isHeader textColor="#fff" />} />
+        <ContentHeader
+          content={<ChannelName name={channelName} isHeader textColor="#fff" />}
+          rightContent={
+            <HeaderActionBar
+              isMembersListActive={this.state.membersListVisible}
+              onMembersToggleClick={this.toggleMembersListVisible}
+            />
+          }
+        />
 
         <div className="content-wrapper">
           <div className="messages-container">
             <MessagesWrapper guild={guild} messages={channelMessages} channelName={channelName} />
             <NewMessageWrapper channelName={channelName} />
           </div>
-          <MembersList guildRolesList={guild.roles} members={members} />
+
+          {this.state.membersListVisible && (
+            <MembersList guildRolesList={guild.roles} members={members} />
+          )}
         </div>
       </StyledChat>
     );

@@ -1,14 +1,12 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import ScrollbarStyles from './ScrollbarStyles';
 import GlobalStyle from './GlobalStyle';
-
 import Navbar from './Navbar';
 import Channels from './Channels';
 import Home from './Home';
 import Chat from './Chat';
-
 import MemberCardPopup from './MemberCardPopup';
 
 import data from '../data';
@@ -18,7 +16,7 @@ const StyledApp = styled.div`
   min-height: 100%;
   width: 100%;
 
-  .appContent {
+  .app-content {
     flex: 1 1 auto;
   }
 `;
@@ -110,7 +108,7 @@ class App extends React.Component {
           selectedChannelId={selectedChannel && selectedChannel.id}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent className="appContent" channel={selectedChannel} guild={selectedGuild} />
+        <ContentComponent className="app-content" channel={selectedChannel} guild={selectedGuild} />
 
         <MemberCardPopup
           guildRolesList={selectedGuild ? selectedGuild.roles : []}

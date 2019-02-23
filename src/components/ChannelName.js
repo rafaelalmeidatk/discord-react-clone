@@ -13,7 +13,7 @@ const StyledChannelName = styled.div`
 
   span {
     margin-top: 3px;
-    font-weight: 500;
+    font-weight: ${props => (props.isHeader ? 600 : 500)};
     font-size: ${props => (props.isHeader ? '1.1em' : '1em')};
     color: ${props => props.textColor || '#72767d'};
   }
