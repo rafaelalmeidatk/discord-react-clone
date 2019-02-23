@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import ScrollbarStyles from './ScrollbarStyles';
+import GlobalStyle from './GlobalStyle';
 
 import Navbar from './Navbar';
 import Channels from './Channels';
@@ -11,19 +12,6 @@ import Chat from './Chat';
 import MemberCardPopup from './MemberCardPopup';
 
 import data from '../data';
-
-const GlobalStyle = createGlobalStyle`
-  html, body, #root {
-    font-family: Catamaran, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-`;
 
 const StyledApp = styled.div`
   display: flex;
