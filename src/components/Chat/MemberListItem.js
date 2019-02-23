@@ -40,7 +40,7 @@ const StyledMember = styled.div`
       height: 10px;
 
       background-clip: padding-box;
-      border: 2px solid ${colors.grayDark};
+      border: 2px solid ${colors.grayNormal};
       border-radius: 999px;
       bottom: -4px;
       right: -2px;

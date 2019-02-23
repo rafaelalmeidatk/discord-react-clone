@@ -3,10 +3,10 @@ export default {
   green: '#3bb483',
   homeIcon: '#fff',
 
-  grayLight: '#393c41',
-  grayNormal: '#323439',
+  grayLight: '#36393f',
+  grayNormal: '#2f3136',
   grayDark: '#2e3034',
-  grayDarker: '#252729',
+  grayDarker: '#202225',
   separator: '#2f3136',
 
   channelSelected: 'rgba(79, 84, 92, .6)',
@@ -26,7 +26,7 @@ export default {
   messageDivider: 'hsla(0,0%,100%,.04)',
 
   scrollbarThumbBackground: '#202225',
-  scrollbarTrackBackground: 'rgba(0, 0, 0, 0.1)',
+  scrollbarTrackBackground: 'rgba(0, 0, 0, 0.13)',
   scrollbarTinyThumbBackground: 'rgba(32, 34, 37, 0.6)',
 
   memberCardHeaderBackground: '#202225',

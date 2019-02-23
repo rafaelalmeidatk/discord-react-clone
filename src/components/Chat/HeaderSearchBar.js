@@ -35,7 +35,7 @@ const StyledHeaderSearchBar = styled.div`
     overflow-wrap: break-word;
 
     color: #fff;
-    font-size: 0.9em;
+    font-size: 0.85em;
     margin: 0 6px;
 
     ::placeholder {
