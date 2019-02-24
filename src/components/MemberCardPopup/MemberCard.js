@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MemberRolesList from './MemberRolesList';
+import UserAvatar from '../UserAvatar';
+
 import colors from '../../utils/colors';
-import constants from '../../utils/constants';
 
 const StyledMemberCard = styled.div`
   width: 250px;
@@ -17,40 +18,8 @@ const StyledMemberCard = styled.div`
     flex-direction: column;
     align-items: center;
 
-    .avatar-wrapper {
-      width: 90px;
-      height: 90px;
-      margin-bottom: 10px;
-      position: relative;
-
-      .avatar {
-        width: 90px;
-        height: 90px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-
-      .status {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-
-        border: 3px solid ${colors.memberCardHeaderBackground};
-        border-radius: 999px;
-        bottom: 0px;
-        right: 0px;
-        box-sizing: content-box;
-      }
-
-      .status.online {
-        background-color: #43b581;
-        box-shadow: inset 0 0 0 2px rgba(180, 225, 205, 0.6);
-      }
-    }
-
     .username {
+      margin-top: 10px;
       color: #fff;
       font-weight: 600;
       white-space: normal;
@@ -133,13 +102,12 @@ const StyledMessageInput = styled.input`
 export default ({ member, guildRolesList }) => (
   <StyledMemberCard>
     <div className="header">
-      <div className="avatar-wrapper">
-        <div
-          className="avatar"
-          style={{ backgroundImage: `url(${member.avatar || constants.defaultAvatar})` }}
-        />
-        <div className="status online" />
-      </div>
+      <UserAvatar
+        avatarUrl={member.avatar}
+        customStatusBorderColor={colors.memberCardHeaderBackground}
+        isBig
+      />
+
       <div className="username">
         {member.username}
         <span className="tag">#{member.tag}</span>

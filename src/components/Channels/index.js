@@ -4,6 +4,7 @@ import colors from '../../utils/colors';
 
 import ScrollableArea from '../ScrollableArea';
 import Category from './Category';
+import UserFooter from './UserFooter';
 
 const StyledChannels = styled.div`
   width: 240px;
@@ -50,6 +51,8 @@ class Channels extends React.Component {
             ))}
             </ScrollableArea>
         </StyledContent>
+
+        <UserFooter />
       </StyledChannels>
     );
   }

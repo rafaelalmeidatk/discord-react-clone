@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import constants from '../../utils/constants';
+import UserAvatar from '../UserAvatar';
+
 import colors from '../../utils/colors';
 
 const StyledMember = styled.div`
@@ -13,41 +14,12 @@ const StyledMember = styled.div`
 
   display: flex;
   align-items: center;
-  box-sizing: content-box;
 
   :hover {
     background: ${colors.memberHoverBg};
-  }
 
-  .avatar-wrapper {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    position: relative;
-
-    .avatar {
-      width: 30px;
-      height: 30px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .status {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-
-      background-clip: padding-box;
-      border: 2px solid ${colors.grayNormal};
-      border-radius: 999px;
-      bottom: -4px;
-      right: -2px;
-    }
-
-    .status.online {
-      background-color: #43b581;
+    .avatar-wrapper .status {
+      border-color: ${colors.memberHoverBg};
     }
   }
 
@@ -66,13 +38,7 @@ const StyledMember = styled.div`
 
 export default ({ member, color }) => (
   <StyledMember color={color}>
-    <div className="avatar-wrapper">
-      <div
-        className="avatar"
-        style={{ backgroundImage: `url(${member.avatar || constants.defaultAvatar})` }}
-      />
-      <div className="status online" />
-    </div>
+    <UserAvatar className="avatar-wrapper" avatarUrl={member.avatar} />
 
     <div className="member-inner">
       <div className="username">{member.username}</div>
