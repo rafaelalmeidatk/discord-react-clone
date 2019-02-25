@@ -25,7 +25,7 @@ const createMessageGroup = (groupId, guild, member, time, onMemberClick, message
   </MemberMessageGroup>
 );
 
-export default class extends React.Component {
+export default class MessagesWrapper extends React.Component {
   bottomElement = React.createRef();
 
   componentDidMount() {
@@ -59,7 +59,8 @@ export default class extends React.Component {
 
     const closeMessageGroupAndClearMessages = () => {
       const userId = headingGroupMessage.userId;
-      const guildMember = guild.members.find(m => m.userId === userId);
+      const guildMembers = guild ? guild.members : [];
+      const guildMember = guildMembers.find(m => m.userId === userId);
       const member = {
         ...data.users[headingGroupMessage.userId],
         roles: guildMember ? guildMember.roles : null

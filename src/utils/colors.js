@@ -12,7 +12,10 @@ export default {
   channelSelected: 'rgba(79, 84, 92, .6)',
   channelHoveredText: '#b9bbbe',
 
-  channelsUserFooterBackground: 'rgba(32,34,37,.3)',
+  privateChannelName: '#72767d',
+  privateChannelSelectedBackground: 'rgba(79, 84, 92, .6)',
+
+  channelsUserFooterBackground: 'rgba(32, 34, 37, .3)',
 
   icon: '#7d7f84',
   iconHover: '#fff',

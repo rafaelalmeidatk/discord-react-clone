@@ -58,11 +58,7 @@ class Chat extends React.Component {
   };
 
   render() {
-    const { className, guild, channel } = this.props;
-
-    const { members } = guild;
-    const { name: channelName } = channel;
-    const channelMessages = channel.messages || [];
+    const { className, isPrivate, channelName, guild, messages } = this.props;
 
     return (
       <StyledChat className={className}>
@@ -78,14 +74,14 @@ class Chat extends React.Component {
 
         <div className="content-wrapper">
           <div className="messages-container">
-            <MessagesWrapper guild={guild} messages={channelMessages} channelName={channelName} />
-            <NewMessageWrapper channelName={channelName} />
+            <MessagesWrapper guild={guild} messages={messages} channelName={channelName} isPrivate={isPrivate} />
+            <NewMessageWrapper channelName={channelName} isPrivate={isPrivate} />
           </div>
 
-          {this.state.membersListVisible && (
+          {!isPrivate && this.state.membersListVisible && (
             <MembersList
               guildRolesList={guild.roles}
-              members={members}
+              members={guild.members}
               onMemberClick={this.handleMemberListMemberClick}
             />
           )}

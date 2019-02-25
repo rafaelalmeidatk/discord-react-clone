@@ -4,51 +4,92 @@
  */
 
 let nextMessageId = 900;
-const generateRandomMessagesFromRandomUsers = numOfMessages => {
-  const messages = [
-    'Quisque eget sapien scelerisque, sagittis neque sed, rhoncus lacus.',
-    'nam elementum',
-    'cursus viverra hendrerit',
-    'Aliquam sagittis, velit finibus consequat hendrerit, eros',
-    'Donec ipsum nisi, fermentum ac velit eget, lacinia aliquet eros',
-    'oin vestibulum luctus nunc vel consectetu',
-    'porttitor',
-    'sque fermentum magna non ex rutru',
-    'accumsan elit ac',
-    'elementum erat',
-    'nullam ultrices ornare lobortis',
-    'proin quis erat at orci tempor lacinia',
-    'Quisque semper odio arcu',
-    'suspendisse iaculis gravida venenatis',
-    'nunc lacinia orci sapien',
-    'posuere',
-    'dignissim vitae magna',
-    'vitae nibh',
-    'maecenas et imperdiet lectus',
-    'et pulvinar lacus vehicula nec'
-  ];
+const randomMessages = [
+  'Quisque eget sapien scelerisque, sagittis neque sed, rhoncus lacus.',
+  'nam elementum',
+  'cursus viverra hendrerit',
+  'Aliquam sagittis, velit finibus consequat hendrerit, eros',
+  'Donec ipsum nisi, fermentum ac velit eget, lacinia aliquet eros',
+  'oin vestibulum luctus nunc vel consectetu',
+  'porttitor',
+  'sque fermentum magna non ex rutru',
+  'accumsan elit ac',
+  'elementum erat',
+  'nullam ultrices ornare lobortis',
+  'proin quis erat at orci tempor lacinia',
+  'Quisque semper odio arcu',
+  'suspendisse iaculis gravida venenatis',
+  'nunc lacinia orci sapien',
+  'posuere',
+  'dignissim vitae magna',
+  'vitae nibh',
+  'maecenas et imperdiet lectus',
+  'et pulvinar lacus vehicula nec'
+]
 
-  const msgs = [];
+const generateRandomMessagesFromRandomUsers = numOfMessages => {
+  const messages = [];
 
   for (var i = 0; i < numOfMessages; i++) {
     const userId = 1 + Math.floor(Math.random() * 6);
     const rows = 1 + Math.floor(Math.random() * 3);
     for (var j = 0; j < rows; j++) {
-      msgs.push({
+      messages.push({
         id: nextMessageId++,
         userId,
-        content: messages[Math.floor(Math.random() * (messages.length - 1))],
+        content: randomMessages[Math.floor(Math.random() * randomMessages.length)],
         time: 'Today at 5:17 PM'
       });
     }
   }
 
-  return msgs;
+  return messages;
 };
+
+const generateRandomMessagesFromGivenUsers = (numOfMessages, users) => {
+  const messages = [];
+
+  for (var i = 0; i < numOfMessages; i++) {
+    const userId = users[Math.floor(Math.random() * users.length)];
+    const rows = 1 + Math.floor(Math.random() * 3);
+    for (var j = 0; j < rows; j++) {
+      messages.push({
+        id: nextMessageId++,
+        userId,
+        content: randomMessages[Math.floor(Math.random() * randomMessages.length)],
+        time: 'Today at 5:17 PM'
+      });
+    }
+  }
+
+  return messages;
+}
 
 export default {
   userId: 1,
   friendsOnlineCount: 2,
+  directMessages: [
+    {
+      id: 333,
+      userId: 2,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 2])]
+    },
+    {
+      id: 334,
+      userId: 3,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 3])]
+    },
+    {
+      id: 335,
+      userId: 4,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 4])]
+    },
+    {
+      id: 336,
+      userId: 5,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 6])]
+    },
+  ],
   guilds: [
     {
       id: 1111,

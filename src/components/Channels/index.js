@@ -5,10 +5,11 @@ import colors from '../../utils/colors';
 import ScrollableArea from '../ScrollableArea';
 import Category from './Category';
 import UserFooter from './UserFooter';
+import PrivateChannels from './PrivateChannels';
 
 const StyledChannels = styled.div`
   width: 240px;
-  
+
   display: flex;
   flex-direction: column;
   background: ${colors.grayNormal};
@@ -31,25 +32,41 @@ const StyledContent = styled.div`
 
 class Channels extends React.Component {
   render() {
-    const { header, categories, guildId, selectedChannelId, onChannelClick } = this.props;
+    const {
+      header,
+      showPrivateChannels,
+      categories,
+      guildId,
+      selectedChannelId,
+      onChannelClick
+    } = this.props;
+    
     return (
       <StyledChannels>
         <StyledHeader>{header}</StyledHeader>
 
         <StyledContent>
           <ScrollableArea forceVertical tinyStyle autoHide>
-          {categories &&
-            categories.map(category => (
-              <Category
-                key={category.id}
-                name={category.name}
-                channels={category.channels}
-                guildId={guildId}
+            {showPrivateChannels && (
+              <PrivateChannels
                 selectedChannelId={selectedChannelId}
                 onChannelClick={onChannelClick}
               />
-            ))}
-            </ScrollableArea>
+            )}
+
+            {!showPrivateChannels &&
+              categories &&
+              categories.map(category => (
+                <Category
+                  key={category.id}
+                  name={category.name}
+                  channels={category.channels}
+                  guildId={guildId}
+                  selectedChannelId={selectedChannelId}
+                  onChannelClick={onChannelClick}
+                />
+              ))}
+          </ScrollableArea>
         </StyledContent>
 
         <UserFooter />

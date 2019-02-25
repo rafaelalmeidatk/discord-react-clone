@@ -23,21 +23,10 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
-    selectedGuildId: 1111,
+    currentArea: 'HOME',
+    selectedGuildId: null,
     selectedChannelsId: {},
-    currentArea: {
-      type: 'CHAT'
-    }
-  };
-
-  getContentComponent = () => {
-    const { currentArea } = this.state;
-    if (currentArea.type === 'HOME') {
-      return Home;
-    }
-    if (currentArea.type === 'CHAT') {
-      return Chat;
-    }
+    selectedPrivateChannelId: 333
   };
 
   getSelectedGuild = () => {
@@ -68,28 +57,73 @@ class App extends React.Component {
     return channels.find(channel => channel.id === id);
   };
 
+  getMessages = () => {
+    const { currentArea, selectedPrivateChannelId } = this.state;
+    if (currentArea === 'HOME') {
+      const dm = data.directMessages.find(dm => dm.id === selectedPrivateChannelId);
+      return dm ? dm.messages : [];
+    }
+    if (currentArea === 'CHAT') {
+      const channel = this.getGuildSelectedChannel();
+      return channel.messages || [];
+    }
+    return [];
+  };
+
+  getSelectedChannelId = () => {
+    const { currentArea, selectedPrivateChannelId } = this.state;
+    if (currentArea === 'HOME') {
+      return selectedPrivateChannelId;
+    }
+    if (currentArea === 'CHAT') {
+      const channel = this.getGuildSelectedChannel();
+      return channel.id;
+    }
+  };
+
+  getChannelName = () => {
+    const { currentArea, selectedPrivateChannelId } = this.state;
+    if (currentArea === 'HOME') {
+      const userId = data.directMessages.find(dm => dm.id === selectedPrivateChannelId).userId;
+      return data.users[userId].username;
+    }
+    if (currentArea === 'CHAT') {
+      const channel = this.getGuildSelectedChannel();
+      return channel.name;
+    }
+  };
+
   handleHomeClick = () => {
-    this.setState({ selectedGuildId: null, currentArea: { type: 'HOME' } });
+    this.setState({ selectedGuildId: null, currentArea: 'HOME' });
   };
 
   handleGuildClick = guildId => {
-    this.setState({ selectedGuildId: guildId, currentArea: { type: 'CHAT' } });
+    this.setState({ selectedGuildId: guildId, currentArea: 'CHAT' });
   };
 
   handleChannelClick = (guildId, channelId) => {
-    this.setState({
-      selectedChannelsId: {
-        ...this.state.selectedChannelsId,
-        [guildId]: channelId
-      }
-    });
+    const { currentArea } = this.state;
+    if (currentArea === 'HOME') {
+      this.setState({
+        selectedPrivateChannelId: channelId
+      });
+    }
+    if (currentArea === 'CHAT') {
+      this.setState({
+        selectedChannelsId: {
+          ...this.state.selectedChannelsId,
+          [guildId]: channelId
+        }
+      });
+    }
   };
 
   render() {
     const { selectedGuildId } = this.state;
-    const ContentComponent = this.getContentComponent();
     const selectedGuild = this.getSelectedGuild();
-    const selectedChannel = this.getGuildSelectedChannel();
+    const showPrivateChannels = !selectedGuild;
+    const messages = this.getMessages();
+    const channelName = this.getChannelName();
 
     return (
       <StyledApp>
@@ -103,12 +137,19 @@ class App extends React.Component {
         />
         <Channels
           header={this.getChannelsHeaderContent()}
+          showPrivateChannels={showPrivateChannels}
           categories={this.getGuildCategories()}
-          guildId={selectedGuild.id}
-          selectedChannelId={selectedChannel && selectedChannel.id}
+          guildId={selectedGuildId}
+          selectedChannelId={this.getSelectedChannelId()}
           onChannelClick={this.handleChannelClick}
         />
-        <ContentComponent className="app-content" channel={selectedChannel} guild={selectedGuild} />
+        <Chat
+          className="app-content"
+          channelName={channelName}
+          guild={selectedGuild}
+          messages={messages}
+          isPrivate={showPrivateChannels}
+        />
 
         <MemberCardPopup
           guildRolesList={selectedGuild ? selectedGuild.roles : []}

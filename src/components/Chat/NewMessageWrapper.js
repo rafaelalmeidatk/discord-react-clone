@@ -12,10 +12,10 @@ const StyledContainer = styled.div`
   padding-top: 20px;
 `;
 
-export default ({ channelName }) => (
+export default ({ channelName, isPrivate }) => (
   <StyledNewMessageWrapper>
     <StyledContainer>
-      <NewMessageForm channelName={channelName} />
+      <NewMessageForm channelName={channelName} isPrivate={isPrivate}/>
     </StyledContainer>
   </StyledNewMessageWrapper>
 );

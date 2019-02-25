@@ -34,13 +34,13 @@ const StyledTextarea = styled.textarea`
   width: 100%;
 `;
 
-export default ({ channelName }) => (
+export default ({ channelName, isPrivate }) => (
   <StyledNewMessageForm>
     <AttachButton />
 
     <StyledDivider />
 
-    <StyledTextarea rows={1} placeholder={`Message #${channelName}`} />
+    <StyledTextarea rows={1} placeholder={`Message ${(isPrivate ? '@' : '#') + channelName}`} />
 
     <NewMessageButtons />
   </StyledNewMessageForm>
