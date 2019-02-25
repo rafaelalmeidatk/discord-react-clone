@@ -31,19 +31,20 @@ const StyledContent = styled.div`
 `;
 
 class Channels extends React.Component {
+  getHeaderContent = () => {
+    const { showPrivateChannels, guild } = this.props;
+    if (showPrivateChannels) {
+      return <input />;
+    }
+    return guild.name;
+  };
+
   render() {
-    const {
-      header,
-      showPrivateChannels,
-      categories,
-      guildId,
-      selectedChannelId,
-      onChannelClick
-    } = this.props;
-    
+    const { showPrivateChannels, guild, selectedChannelId, onChannelClick } = this.props;
+
     return (
       <StyledChannels>
-        <StyledHeader>{header}</StyledHeader>
+        <StyledHeader>{this.getHeaderContent()}</StyledHeader>
 
         <StyledContent>
           <ScrollableArea forceVertical tinyStyle autoHide>
@@ -55,13 +56,13 @@ class Channels extends React.Component {
             )}
 
             {!showPrivateChannels &&
-              categories &&
-              categories.map(category => (
+              guild &&
+              guild.categories.map(category => (
                 <Category
                   key={category.id}
                   name={category.name}
                   channels={category.channels}
-                  guildId={guildId}
+                  guildId={guild.id}
                   selectedChannelId={selectedChannelId}
                   onChannelClick={onChannelClick}
                 />

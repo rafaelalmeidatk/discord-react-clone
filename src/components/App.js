@@ -5,7 +5,6 @@ import ScrollbarStyles from './ScrollbarStyles';
 import GlobalStyle from './GlobalStyle';
 import Navbar from './Navbar';
 import Channels from './Channels';
-import Home from './Home';
 import Chat from './Chat';
 import MemberCardPopup from './MemberCardPopup';
 
@@ -34,17 +33,6 @@ class App extends React.Component {
     return selectedGuildId ? data.guilds.find(g => g.id === selectedGuildId) : null;
   };
 
-  getChannelsHeaderContent = () => {
-    const { selectedGuildId } = this.state;
-
-    return selectedGuildId ? this.getSelectedGuild().name : 'textbox here soon';
-  };
-
-  getGuildCategories = () => {
-    const guild = this.getSelectedGuild();
-    return guild ? guild.categories : null;
-  };
-
   getGuildSelectedChannel = () => {
     const guild = this.getSelectedGuild();
     if (!guild) return null;
@@ -57,39 +45,23 @@ class App extends React.Component {
     return channels.find(channel => channel.id === id);
   };
 
-  getMessages = () => {
+  getSelectedChannelData = () => {
     const { currentArea, selectedPrivateChannelId } = this.state;
     if (currentArea === 'HOME') {
       const dm = data.directMessages.find(dm => dm.id === selectedPrivateChannelId);
-      return dm ? dm.messages : [];
+      return {
+        id: selectedPrivateChannelId,
+        name: data.users[dm.userId].username,
+        messages: dm.messages
+      };
     }
     if (currentArea === 'CHAT') {
       const channel = this.getGuildSelectedChannel();
-      return channel.messages || [];
-    }
-    return [];
-  };
-
-  getSelectedChannelId = () => {
-    const { currentArea, selectedPrivateChannelId } = this.state;
-    if (currentArea === 'HOME') {
-      return selectedPrivateChannelId;
-    }
-    if (currentArea === 'CHAT') {
-      const channel = this.getGuildSelectedChannel();
-      return channel.id;
-    }
-  };
-
-  getChannelName = () => {
-    const { currentArea, selectedPrivateChannelId } = this.state;
-    if (currentArea === 'HOME') {
-      const userId = data.directMessages.find(dm => dm.id === selectedPrivateChannelId).userId;
-      return data.users[userId].username;
-    }
-    if (currentArea === 'CHAT') {
-      const channel = this.getGuildSelectedChannel();
-      return channel.name;
+      return {
+        id: channel.id,
+        name: channel.name,
+        messages: channel.messages || []
+      };
     }
   };
 
@@ -122,8 +94,7 @@ class App extends React.Component {
     const { selectedGuildId } = this.state;
     const selectedGuild = this.getSelectedGuild();
     const showPrivateChannels = !selectedGuild;
-    const messages = this.getMessages();
-    const channelName = this.getChannelName();
+    const selectedChannelData = this.getSelectedChannelData();
 
     return (
       <StyledApp>
@@ -136,18 +107,17 @@ class App extends React.Component {
           selectedGuildId={selectedGuildId}
         />
         <Channels
-          header={this.getChannelsHeaderContent()}
           showPrivateChannels={showPrivateChannels}
-          categories={this.getGuildCategories()}
+          guild={selectedGuild}
           guildId={selectedGuildId}
-          selectedChannelId={this.getSelectedChannelId()}
+          selectedChannelId={selectedChannelData.id}
           onChannelClick={this.handleChannelClick}
         />
         <Chat
           className="app-content"
-          channelName={channelName}
+          channelName={selectedChannelData.name}
           guild={selectedGuild}
-          messages={messages}
+          messages={selectedChannelData.messages}
           isPrivate={showPrivateChannels}
         />
 
