@@ -36,8 +36,8 @@ const StyledMember = styled.div`
   }
 `;
 
-export default ({ member, color }) => (
-  <StyledMember color={color}>
+export default ({ member, color, onMemberClick }) => (
+  <StyledMember color={color} onClick={e => onMemberClick(e, member)}>
     <UserAvatar className="avatar-wrapper" avatarUrl={member.avatar} />
 
     <div className="member-inner">

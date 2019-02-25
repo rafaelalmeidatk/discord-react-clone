@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../utils/colors';
+
 import ContentHeader from '../ContentHeader';
 import HeaderActionBar from './HeaderActionBar';
 import ChannelName from '../ChannelName';
 import MessagesWrapper from './MessagesWrapper';
 import NewMessageWrapper from './NewMessageWrapper';
 import MembersList from './MembersList';
+import MemberCardPopup from '../MemberCardPopup';
+
+import constants from '../../utils/constants';
+import colors from '../../utils/colors';
 
 const StyledChat = styled.div`
   background: ${colors.grayLight};
@@ -36,6 +40,23 @@ class Chat extends React.Component {
     this.setState({ membersListVisible: !this.state.membersListVisible });
   };
 
+  handleMemberListMemberClick = (element, member) => {
+    const { guild } = this.props;
+    const guildMember = guild.members.find(m => m.userId === member.id);
+    const memberWithRoles = {
+      ...member,
+      roles: guildMember ? guildMember.roles : null
+    };
+
+    const { currentTarget: target } = element;
+    const targetRect = target.getBoundingClientRect();
+    MemberCardPopup.show({
+      direction: 'right',
+      position: { x: targetRect.left - constants.memberCardWidth, y: targetRect.top },
+      member: memberWithRoles
+    });
+  };
+
   render() {
     const { className, guild, channel } = this.props;
 
@@ -62,7 +83,11 @@ class Chat extends React.Component {
           </div>
 
           {this.state.membersListVisible && (
-            <MembersList guildRolesList={guild.roles} members={members} />
+            <MembersList
+              guildRolesList={guild.roles}
+              members={members}
+              onMemberClick={this.handleMemberListMemberClick}
+            />
           )}
         </div>
       </StyledChat>

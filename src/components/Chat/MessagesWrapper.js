@@ -14,7 +14,13 @@ const StyledMessagesWrapper = styled.div`
 `;
 
 const createMessageGroup = (groupId, guild, member, time, onMemberClick, messages) => (
-  <MemberMessageGroup key={groupId} guild={guild} member={member} time={time} onMemberClick={onMemberClick}>
+  <MemberMessageGroup
+    key={groupId}
+    guild={guild}
+    member={member}
+    time={time}
+    onMemberClick={onMemberClick}
+  >
     {messages}
   </MemberMessageGroup>
 );
@@ -38,6 +44,7 @@ export default class extends React.Component {
     const { target } = element;
     const targetRect = target.getBoundingClientRect();
     MemberCardPopup.show({
+      direction: 'left',
       position: { x: targetRect.left + targetRect.width + 10, y: targetRect.top },
       member
     });

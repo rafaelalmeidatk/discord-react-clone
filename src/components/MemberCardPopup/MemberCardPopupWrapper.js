@@ -1,7 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import MemberCard from './MemberCard';
+
+const fadeInAnimation = ({ direction }) => keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(
+      ${{ left: '15%', right: '-15%' }[direction || 'left']}
+    );
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 const StyledMemberCardPopupWrapper = styled.div`
   position: absolute;
@@ -12,18 +25,7 @@ const StyledMemberCardPopupWrapper = styled.div`
   top: ${props => props.position && props.position.y}px;
   left: ${props => props.position && props.position.x}px;
 
-  animation: fade-in ease-in 0.1s forwards;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateX(15%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+  animation: ${props => fadeInAnimation} ease-in 0.1s forwards;
 `;
 
 export default class MemberCardPopupWrapper extends React.Component {
@@ -46,9 +48,9 @@ export default class MemberCardPopupWrapper extends React.Component {
   };
 
   render() {
-    const { position, member, guildRolesList } = this.props;
+    const { direction, position, member, guildRolesList } = this.props;
     return (
-      <StyledMemberCardPopupWrapper ref={this.node} position={position}>
+      <StyledMemberCardPopupWrapper ref={this.node} direction={direction} position={position}>
         <MemberCard member={member} guildRolesList={guildRolesList} />
       </StyledMemberCardPopupWrapper>
     );

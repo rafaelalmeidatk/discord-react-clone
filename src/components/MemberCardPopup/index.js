@@ -16,9 +16,10 @@ export default class MemberCardPopup extends React.Component {
     this.instance && this.instance.showPopup(config);
   }
 
-  showPopup = ({ position, member }) => {
+  showPopup = ({ direction, position, member }) => {
     this.setState({
       isPopupVisible: true,
+      direction,
       position,
       member
     });
@@ -29,13 +30,14 @@ export default class MemberCardPopup extends React.Component {
   };
 
   render() {
-    const { isPopupVisible, position, member } = this.state;
+    const { isPopupVisible, direction, position, member } = this.state;
     const { guildRolesList } = this.props;
-    
+
     return (
       <StyledMemberCardPopup>
         {isPopupVisible && (
           <MemberCardPopupWrapper
+            direction={direction}
             position={position}
             member={member}
             guildRolesList={guildRolesList}

@@ -26,7 +26,7 @@ const StyledRoleName = styled.div`
   white-space: nowrap;
 `;
 
-export default ({ guildRolesList, members }) => {
+export default ({ guildRolesList, members, onMemberClick }) => {
   const roleSeparators = { online: { name: 'Online', members: [] } };
 
   members.forEach(member => {
@@ -64,6 +64,7 @@ export default ({ guildRolesList, members }) => {
             <StyledRoleName>
               {roleSeparators[roleId].name}—{roleSeparators[roleId].members.length}
             </StyledRoleName>
+
             {roleSeparators[roleId].members.map(member => {
               const user = data.users[member.userId];
               const firstRoleIdWithColor = member.roles.find(roleId => {
@@ -72,7 +73,14 @@ export default ({ guildRolesList, members }) => {
               });
 
               const color = firstRoleIdWithColor && guildRolesList[firstRoleIdWithColor].color;
-              return <MemberListItem key={user.id} member={user} color={color} />;
+              return (
+                <MemberListItem
+                  key={user.id}
+                  member={user}
+                  color={color}
+                  onMemberClick={onMemberClick}
+                />
+              );
             })}
           </React.Fragment>
         ))}

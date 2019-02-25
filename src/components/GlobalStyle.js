@@ -6,6 +6,7 @@ export default createGlobalStyle`
     font-weight: 500;
     height: 100%;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   *, *:before, *:after {

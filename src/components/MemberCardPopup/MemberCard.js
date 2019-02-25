@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import MemberRolesList from './MemberRolesList';
 import UserAvatar from '../UserAvatar';
 
+import constants from '../../utils/constants';
 import colors from '../../utils/colors';
 
 const StyledMemberCard = styled.div`
-  width: 250px;
+  width: ${constants.memberCardWidth}px;
   background-color: ${colors.memberCardBackground};
   color: ${colors.memberCardContent};
 

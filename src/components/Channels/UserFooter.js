@@ -8,7 +8,6 @@ import GearIcon from '../../icons/Gear';
 
 import colors from '../../utils/colors';
 import data from '../../data';
-import Headphones from '../../icons/Headphones';
 
 const StyledUserFooter = styled.div`
   margin-bottom: 1px;
