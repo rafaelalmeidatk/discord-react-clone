@@ -25,13 +25,13 @@ const randomMessages = [
   'vitae nibh',
   'maecenas et imperdiet lectus',
   'et pulvinar lacus vehicula nec'
-]
+];
 
 const generateRandomMessagesFromRandomUsers = numOfMessages => {
   const messages = [];
 
   for (var i = 0; i < numOfMessages; i++) {
-    const userId = 1 + Math.floor(Math.random() * 6);
+    const userId = 1 + Math.floor(Math.random() * 20);
     const rows = 1 + Math.floor(Math.random() * 3);
     for (var j = 0; j < rows; j++) {
       messages.push({
@@ -63,7 +63,7 @@ const generateRandomMessagesFromGivenUsers = (numOfMessages, users) => {
   }
 
   return messages;
-}
+};
 
 export default {
   userId: 1,
@@ -89,6 +89,31 @@ export default {
       userId: 6,
       messages: [...generateRandomMessagesFromGivenUsers(20, [1, 6])]
     },
+    {
+      id: 337,
+      userId: 12,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 12])]
+    },
+    {
+      id: 338,
+      userId: 15,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 15])]
+    },
+    {
+      id: 339,
+      userId: 9,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 9])]
+    },
+    {
+      id: 340,
+      userId: 16,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 16])]
+    },
+    {
+      id: 341,
+      userId: 14,
+      messages: [...generateRandomMessagesFromGivenUsers(20, [1, 14])]
+    }
   ],
   guilds: [
     {
@@ -106,7 +131,7 @@ export default {
             {
               id: 111123,
               name: 'welcome',
-              messages: [...generateRandomMessagesFromRandomUsers(3)]
+              messages: [...generateRandomMessagesFromRandomUsers(2)]
             },
             {
               id: 111124,
@@ -116,6 +141,47 @@ export default {
             {
               id: 111125,
               name: 'need-help',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 111126,
+              name: 'introductions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 111127,
+              name: 'resources',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 111128,
+              name: 'news-and-links',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        },
+        {
+          id: 11113,
+          name: 'community',
+          channels: [
+            {
+              id: 111133,
+              name: 'q-and-a',
+              messages: [...generateRandomMessagesFromRandomUsers(3)]
+            },
+            {
+              id: 111134,
+              name: 'conferences',
+              messages: [...generateRandomMessagesFromRandomUsers(50)]
+            },
+            {
+              id: 111135,
+              name: 'jobs-advice',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 111136,
+              name: 'code-review',
               messages: [...generateRandomMessagesFromRandomUsers(30)]
             }
           ]
@@ -145,8 +211,23 @@ export default {
         { userId: 1, roles: [11, 12] },
         { userId: 2, roles: [11] },
         { userId: 3, roles: [12] },
+        { userId: 4, roles: [] },
+        { userId: 5, roles: [] },
         { userId: 6, roles: [] },
-        { userId: 7, roles: [] }
+        { userId: 7, roles: [13] },
+        { userId: 8, roles: [13] },
+        { userId: 9, roles: [] },
+        { userId: 10, roles: [] },
+        { userId: 11, roles: [] },
+        { userId: 12, roles: [] },
+        { userId: 13, roles: [] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 16, roles: [] },
+        { userId: 17, roles: [] },
+        { userId: 18, roles: [] },
+        { userId: 19, roles: [] },
+        { userId: 20, roles: [] }
       ]
     },
     {
@@ -196,6 +277,100 @@ export default {
               id: 222235,
               name: 'libraries',
               messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 222236,
+              name: 'questions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 222237,
+              name: 'non-programming',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        }
+      ],
+      roles: {
+        11: {
+          id: 11,
+          name: 'MonoGame Maintainer',
+          color: 'rgb(46, 204, 113)',
+          isSeparated: true
+        },
+        12: {
+          id: 21,
+          name: 'Server Admin',
+          color: 'rgb(233, 30, 99)',
+          isSeparated: true
+        },
+        13: {
+          id: 13,
+          name: 'Server Moderator',
+          color: 'rgb(52, 152, 219)',
+          isSeparated: true
+        }
+      },
+      members: [
+        { userId: 1, roles: [] },
+        { userId: 3, roles: [11] },
+        { userId: 4, roles: [12] },
+        { userId: 5, roles: [12] },
+        { userId: 6, roles: [13] },
+        { userId: 7, roles: [] },
+        { userId: 8, roles: [] },
+        { userId: 9, roles: [] },
+        { userId: 10, roles: [] },
+        { userId: 11, roles: [] },
+        { userId: 12, roles: [] },
+        { userId: 13, roles: [] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 18, roles: [11] }
+      ]
+    },
+    {
+      id: 3333,
+      name: 'Terraria',
+      initials: 'T',
+      icon:
+        'https://cdn.discordapp.com/icons/251072485095636994/1c0891700d01c1eb2fe8c75a74765203.png',
+      welcomeChannelId: 333323,
+      categories: [
+        {
+          id: 33332,
+          name: 'announcements',
+          channels: [
+            {
+              id: 333323,
+              name: 'rules',
+              messages: [...generateRandomMessagesFromRandomUsers(1)]
+            },
+            {
+              id: 333324,
+              name: 'announcements',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        },
+        {
+          id: 33333,
+          name: 'general',
+          channels: [
+            {
+              id: 333333,
+              name: 'general',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 333334,
+              name: 'questions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 333335,
+              name: 'offtopic',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
             }
           ]
         }
@@ -204,14 +379,285 @@ export default {
         11: {
           id: 11,
           name: 'Admin',
-          color: 'red'
+          color: 'rgb(253, 81, 81)',
+          isSeparated: true
+        },
+        12: {
+          id: 21,
+          name: 'Moderator',
+          color: 'rgb(117, 238, 238)',
+          isSeparated: true
+        }
+      },
+      members: [
+        { userId: 1, roles: [] },
+        { userId: 3, roles: [] },
+        { userId: 4, roles: [] },
+        { userId: 5, roles: [11] },
+        { userId: 6, roles: [] },
+        { userId: 7, roles: [] },
+        { userId: 8, roles: [12] },
+        { userId: 9, roles: [11] },
+        { userId: 10, roles: [] },
+        { userId: 11, roles: [] },
+        { userId: 12, roles: [] },
+        { userId: 13, roles: [11] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 16, roles: [] },
+        { userId: 17, roles: [] },
+        { userId: 18, roles: [] },
+        { userId: 19, roles: [] },
+        { userId: 20, roles: [] }
+      ]
+    },
+    {
+      id: 4444,
+      name: 'Hearthstone',
+      initials: 'H',
+      icon:
+        'https://cdn.discordapp.com/icons/127167843383902209/008469e0d4b7fa02a4d7824beaa8aa90.png?',
+      welcomeChannelId: 444423,
+      categories: [
+        {
+          id: 44442,
+          name: 'announcements',
+          channels: [
+            {
+              id: 444423,
+              name: 'rules',
+              messages: [...generateRandomMessagesFromRandomUsers(1)]
+            },
+            {
+              id: 444424,
+              name: 'announcements',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        },
+        {
+          id: 44443,
+          name: 'general',
+          channels: [
+            {
+              id: 444433,
+              name: 'general',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 444434,
+              name: 'questions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 444435,
+              name: 'offtopic',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        }
+      ],
+      roles: {
+        11: {
+          id: 11,
+          name: 'Admin',
+          color: 'rgb(253, 81, 81)',
+          isSeparated: true
+        },
+        12: {
+          id: 21,
+          name: 'Moderator',
+          color: 'rgb(117, 238, 238)',
+          isSeparated: true
+        }
+      },
+      members: [
+        { userId: 1, roles: [] },
+        { userId: 3, roles: [12] },
+        { userId: 4, roles: [12] },
+        { userId: 5, roles: [11] },
+        { userId: 6, roles: [] },
+        { userId: 7, roles: [] },
+        { userId: 8, roles: [] },
+        { userId: 9, roles: [] },
+        { userId: 10, roles: [] },
+        { userId: 11, roles: [] },
+        { userId: 12, roles: [] },
+        { userId: 13, roles: [] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 16, roles: [] },
+        { userId: 17, roles: [] },
+        { userId: 18, roles: [] }
+      ]
+    },
+    {
+      id: 5555,
+      name: 'Apex Legends',
+      initials: 'AL',
+      icon:
+        'https://cdn.discordapp.com/icons/541484311354933258/b8fc0f55e75911e45fb3348eb510fa6f.png?',
+      welcomeChannelId: 555523,
+      categories: [
+        {
+          id: 55552,
+          name: 'announcements',
+          channels: [
+            {
+              id: 555523,
+              name: 'rules',
+              messages: [...generateRandomMessagesFromRandomUsers(1)]
+            },
+            {
+              id: 555524,
+              name: 'announcements',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        },
+        {
+          id: 55553,
+          name: 'general',
+          channels: [
+            {
+              id: 555533,
+              name: 'general',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 555534,
+              name: 'questions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 555535,
+              name: 'offtopic',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        }
+      ],
+      roles: {
+        11: {
+          id: 11,
+          name: 'Admin',
+          color: 'rgb(253, 81, 81)',
+          isSeparated: true
+        },
+        12: {
+          id: 21,
+          name: 'Moderator',
+          color: 'rgb(117, 238, 238)',
+          isSeparated: true
+        }
+      },
+      members: [
+        { userId: 1, roles: [] },
+        { userId: 3, roles: [] },
+        { userId: 4, roles: [] },
+        { userId: 5, roles: [] },
+        { userId: 6, roles: [] },
+        { userId: 7, roles: [11] },
+        { userId: 8, roles: [] },
+        { userId: 9, roles: [] },
+        { userId: 10, roles: [12] },
+        { userId: 11, roles: [12] },
+        { userId: 12, roles: [12] },
+        { userId: 13, roles: [] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 16, roles: [] },
+        { userId: 17, roles: [11] },
+        { userId: 18, roles: [] },
+        { userId: 19, roles: [11] },
+        { userId: 20, roles: [] }
+      ]
+    },
+    {
+      id: 6666,
+      name: 'Cats Nation',
+      initials: 'CN',
+      icon: 'https://purr.objects-us-east-1.dream.io/i/OoAEJ.jpg',
+      welcomeChannelId: 666623,
+      categories: [
+        {
+          id: 66662,
+          name: 'announcements',
+          channels: [
+            {
+              id: 666623,
+              name: 'rules',
+              messages: [...generateRandomMessagesFromRandomUsers(1)]
+            },
+            {
+              id: 666624,
+              name: 'announcements',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        },
+        {
+          id: 66663,
+          name: 'general',
+          channels: [
+            {
+              id: 666633,
+              name: 'general',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 666634,
+              name: 'questions',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            },
+            {
+              id: 666635,
+              name: 'offtopic',
+              messages: [...generateRandomMessagesFromRandomUsers(30)]
+            }
+          ]
+        }
+      ],
+      roles: {
+        11: {
+          id: 11,
+          name: 'Admin',
+          color: 'rgb(253, 81, 81)',
+          isSeparated: true
+        },
+        12: {
+          id: 12,
+          name: 'Moderator',
+          color: 'rgb(117, 238, 238)',
+          isSeparated: true
+        },
+        13: {
+          id: 13,
+          name: 'Fox',
+          color: 'rgb(230, 126, 34)',
+          isSeparated: true
         }
       },
       members: [
         { userId: 1, roles: [11] },
         { userId: 3, roles: [] },
         { userId: 4, roles: [] },
-        { userId: 5, roles: [] }
+        { userId: 5, roles: [11] },
+        { userId: 6, roles: [] },
+        { userId: 7, roles: [12] },
+        { userId: 8, roles: [] },
+        { userId: 9, roles: [] },
+        { userId: 10, roles: [] },
+        { userId: 11, roles: [12] },
+        { userId: 12, roles: [12] },
+        { userId: 13, roles: [12] },
+        { userId: 14, roles: [] },
+        { userId: 15, roles: [] },
+        { userId: 16, roles: [] },
+        { userId: 17, roles: [] },
+        { userId: 18, roles: [] },
+        { userId: 19, roles: [13] },
+        { userId: 20, roles: [] }
       ]
     }
   ],
@@ -219,37 +665,123 @@ export default {
     1: {
       id: 1,
       username: 'rafaelalmeidatk',
-      tag: 7126
+      tag: 7126,
+      avatar: 'https://i.imgur.com/cnAtbiX.png'
     },
     2: {
       id: 2,
       username: 'dodge',
-      tag: 3948
+      tag: 3948,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/40hUu.jpg'
     },
     3: {
       id: 3,
       username: 'moustache',
-      tag: 5249
+      tag: 5249,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/pLnXb.jpg'
     },
     4: {
       id: 4,
       username: 'dice',
-      tag: 2183
+      tag: 2183,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/20170429_094413.jpg'
     },
     5: {
       id: 5,
       username: 'blender',
-      tag: 8613
+      tag: 8613,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/ugvmx.jpg'
     },
     6: {
       id: 6,
       username: 'freefall',
-      tag: 5485
+      tag: 5485,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160629_130809.jpg'
     },
     7: {
       id: 7,
       username: 'moist',
-      tag: 8007
+      tag: 8007,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/TcEeO.jpg'
+    },
+
+    8: {
+      id: 8,
+      username: 'lucy',
+      tag: 4521,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/1219.jpg'
+    },
+    9: {
+      id: 9,
+      username: 'bind',
+      tag: 8745,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160202053446.jpg'
+    },
+    10: {
+      id: 10,
+      username: 'ruth',
+      tag: 6547,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/diFls.jpg'
+    },
+    11: {
+      id: 11,
+      username: 'classic',
+      tag: 2147,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/image1-10.jpg'
+    },
+    12: {
+      id: 12,
+      username: 'nadir',
+      tag: 1427,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/BPU3b.jpg'
+    },
+    13: {
+      id: 13,
+      username: 'socks',
+      tag: 1235,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/bs3vdvb.jpg'
+    },
+    14: {
+      id: 14,
+      username: 'wilson',
+      tag: 8524,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20171005_180555.jpg'
+    },
+    15: {
+      id: 15,
+      username: 'board',
+      tag: 7412,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/plLu5.jpg'
+    },
+    16: {
+      id: 16,
+      username: 'jolt',
+      tag: 9635,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160828_102320.jpg'
+    },
+    17: {
+      id: 17,
+      username: 'quark',
+      tag: 8542,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/7UPgK.jpg'
+    },
+    18: {
+      id: 18,
+      username: 'invent',
+      tag: 7856,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160226_191246.jpeg'
+    },
+    19: {
+      id: 19,
+      username: 'fox',
+      tag: 7894,
+      avatar: 'https://i.imgur.com/DH3GF6U.png'
+    },
+    20: {
+      id: 20,
+      username: 'stylus',
+      tag: 6392,
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/sVI1S.jpg'
     }
   }
 };

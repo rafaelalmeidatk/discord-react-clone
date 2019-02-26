@@ -81,7 +81,7 @@ export default () => {
 
   return (
     <StyledUserFooter>
-      <UserAvatar />
+      <UserAvatar avatarUrl={user.avatar} />
 
       <div className="content">
         <div className="username">{user.username}teste</div>

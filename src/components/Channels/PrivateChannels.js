@@ -12,7 +12,7 @@ import colors from '../../utils/colors';
 import data from '../../data';
 
 const StyledPrivateChannels = styled.div`
-  margin-top: 20px;
+  margin: 20px 0 8px;
 
   .header {
     margin-top: 12px;
