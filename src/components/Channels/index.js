@@ -17,11 +17,32 @@ const StyledChannels = styled.div`
 
 const StyledHeader = styled.div`
   height: 48px;
-  padding: 0 12px 0 16px;
   display: flex;
   align-items: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   color: #fff;
+
+  .guild-name {
+    padding: 0 12px 0 16px;
+  }
+`;
+
+const StyledSearchBar = styled.input`
+  margin: 0 12px 0 12px;
+  padding: 7px 8px 5px 10px;
+  width: 100%;
+  height: 32px;
+
+  background: #25272b;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  font-size: 0.87em;
+  color: #b9bbbe;
+
+  ::placeholder {
+    opacity: .6;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -34,9 +55,9 @@ class Channels extends React.Component {
   getHeaderContent = () => {
     const { showPrivateChannels, guild } = this.props;
     if (showPrivateChannels) {
-      return <input />;
+      return <StyledSearchBar placeholder="Find or start a conversation" />;
     }
-    return guild.name;
+    return <div className="guild-name">{guild.name}</div>;
   };
 
   render() {

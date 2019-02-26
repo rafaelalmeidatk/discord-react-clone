@@ -109,16 +109,15 @@ class App extends React.Component {
         <Channels
           showPrivateChannels={showPrivateChannels}
           guild={selectedGuild}
-          guildId={selectedGuildId}
           selectedChannelId={selectedChannelData.id}
           onChannelClick={this.handleChannelClick}
         />
         <Chat
           className="app-content"
+          isPrivate={showPrivateChannels}
           channelName={selectedChannelData.name}
           guild={selectedGuild}
           messages={selectedChannelData.messages}
-          isPrivate={showPrivateChannels}
         />
 
         <MemberCardPopup
