@@ -23,7 +23,21 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
   text-decoration: none;
   color: #fff;
 
-  :hover {
+  &.add {
+    background: transparent;
+    border: 1px dashed ${colors.addGuildBorder};
+    color: ${colors.addGuildBorder};
+
+    font-weight: 300;
+    font-size: 2.1em;
+
+    :hover {
+      border-color: hsla(0, 0%, 100%, 0.75);
+      color: hsla(0, 0%, 100%, 0.75);
+    }
+  }
+
+  :hover:not(.add) {
     background-color: ${colors.primary};
     border-radius: 15px;
   }
@@ -47,14 +61,22 @@ const HomeIcon = styled(DiscordIcon)`
   padding: 5px;
 `;
 
-export default ({ name, icon, selected, isHome, onClick }) => {
+export default ({ name, icon, selected, isHome, isAdd, onClick }) => {
   let content = name;
   if (isHome) {
     content = <HomeIcon />;
   }
+  if (isAdd) {
+    content = '+';
+  }
 
   return (
-    <StyledGuildIcon selected={selected} icon={icon} onClick={onClick}>
+    <StyledGuildIcon
+      selected={selected}
+      icon={icon}
+      onClick={onClick}
+      className={isAdd ? 'add' : ''}
+    >
       {!icon ? content : ''}
     </StyledGuildIcon>
   );

@@ -12,8 +12,11 @@ const StyledNavbar = styled.div`
   background: ${colors.grayDarker};
   position: relative;
   flex-shrink: 0;
+  padding-bottom: 8px;
 
   .content {
+    padding-bottom: 8px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +47,8 @@ export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
             onClick={() => onGuildClick(guild.id)}
           />
         ))}
+
+        <GuildIcon isAdd={true} />
       </div>
     </ScrollableArea>
   </StyledNavbar>

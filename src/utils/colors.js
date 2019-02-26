@@ -2,6 +2,7 @@ export default {
   primary: '#7187d6',
   green: '#3bb483',
   homeIcon: '#fff',
+  addGuildBorder: '#535559',
 
   grayLight: '#36393f',
   grayNormal: '#2f3136',
