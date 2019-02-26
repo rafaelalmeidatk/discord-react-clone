@@ -86,7 +86,7 @@ export default {
     },
     {
       id: 336,
-      userId: 5,
+      userId: 6,
       messages: [...generateRandomMessagesFromGivenUsers(20, [1, 6])]
     },
   ],
