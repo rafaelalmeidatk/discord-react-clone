@@ -63,7 +63,7 @@ class Chat extends React.Component {
     return (
       <StyledChat className={className}>
         <ContentHeader
-          content={<ChannelName name={channelName} isHeader textColor="#fff" />}
+          content={<ChannelName name={channelName} isHeader isUser={isPrivate} textColor="#fff" />}
           rightContent={
             <HeaderActionBar
               isMembersListActive={this.state.membersListVisible}

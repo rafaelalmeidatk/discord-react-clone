@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import AtIcon from '../icons/At';
 import HashtagIcon from '../icons/hashtag';
 
 const StyledChannelName = styled.div`
@@ -19,9 +21,9 @@ const StyledChannelName = styled.div`
   }
 `;
 
-export default ({ name, textColor, isHeader }) => (
+export default ({ name, textColor, isHeader, isUser }) => (
   <StyledChannelName isHeader={isHeader} textColor={textColor}>
-    <HashtagIcon />
+    {isUser ? <AtIcon /> : <HashtagIcon />}
     <span>{name}</span>
   </StyledChannelName>
 );
