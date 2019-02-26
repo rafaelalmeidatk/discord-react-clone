@@ -7,15 +7,19 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
   margin-top: 10px;
   width: 50px;
   height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
   background: ${props => (props.selected ? colors.primary : colors.grayNormal)};
   background-image: ${props => props.icon && `url(${props.icon})`};
   background-size: cover;
   background-position: center;
   border-radius: ${props => (props.selected ? '15px' : '50%')};
+
   transition: 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-decoration: none;
   color: #fff;
 
@@ -30,7 +34,7 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
     width: 10px;
     height: 40px;
     position: absolute;
-    left: -5px;
+    left: -15px;
     border-radius: 20px;
     background: #fff;
   }
