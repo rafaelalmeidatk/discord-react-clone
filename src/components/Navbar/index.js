@@ -4,6 +4,7 @@ import colors from '../../utils/colors';
 import GuildIcon from './GuildIcon';
 import OnlineFriendsCounter from './OnlineFriendsCounter';
 import ScrollableArea from '../ScrollableArea';
+import { TooltipWrapper } from '../Tooltip';
 
 import data from '../../data';
 
@@ -16,7 +17,7 @@ const StyledNavbar = styled.div`
 
   .content {
     padding-bottom: 8px;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,22 +34,27 @@ export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
   <StyledNavbar>
     <ScrollableArea invisible>
       <div className="content">
-        <GuildIcon isHome={true} selected={!selectedGuildId} onClick={onHomeClick} />
+        <TooltipWrapper content="Home" direction="right">
+          <GuildIcon isHome={true} selected={!selectedGuildId} onClick={onHomeClick} />
+        </TooltipWrapper>
         <OnlineFriendsCounter online={data.friendsOnlineCount} />
 
         <GuildSeparator />
 
         {data.guilds.map(guild => (
-          <GuildIcon
-            key={guild.id}
-            name={guild.initials}
-            icon={guild.icon}
-            selected={selectedGuildId === guild.id}
-            onClick={() => onGuildClick(guild.id)}
-          />
+          <TooltipWrapper key={guild.id} content={guild.name} direction="right">
+            <GuildIcon
+              name={guild.initials}
+              icon={guild.icon}
+              selected={selectedGuildId === guild.id}
+              onClick={() => onGuildClick(guild.id)}
+            />
+          </TooltipWrapper>
         ))}
 
-        <GuildIcon isAdd={true} />
+        <TooltipWrapper content="Add a Server" direction="right">
+          <GuildIcon isAdd={true} />
+        </TooltipWrapper>
       </div>
     </ScrollableArea>
   </StyledNavbar>

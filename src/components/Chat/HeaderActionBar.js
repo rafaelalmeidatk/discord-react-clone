@@ -7,6 +7,7 @@ import PeopleIcon from '../../icons/People';
 import MentionIcon from '../../icons/Mention';
 import QuestionMarkIcon from '../../icons/QuestionMark';
 import HeaderSearchBar from './HeaderSearchBar';
+import { TooltipWrapper } from '../Tooltip';
 
 const StyledHeaderActionBar = styled.div`
   display: flex;
@@ -42,28 +43,38 @@ const StyledIconButton = styled.span`
 
 export default ({ isMembersListActive, onMembersToggleClick }) => (
   <StyledHeaderActionBar>
-    <StyledIconButton>
-      <NotificationBellIcon />
-    </StyledIconButton>
+    <TooltipWrapper content="Mute Channel" direction="bottom">
+      <StyledIconButton>
+        <NotificationBellIcon />
+      </StyledIconButton>
+    </TooltipWrapper>
 
-    <StyledIconButton>
-      <PinIcon />
-    </StyledIconButton>
+    <TooltipWrapper content="Pinned Messages" direction="bottom">
+      <StyledIconButton>
+        <PinIcon />
+      </StyledIconButton>
+    </TooltipWrapper>
 
-    <StyledIconButton onClick={onMembersToggleClick}>
-      <PeopleIcon className={isMembersListActive ? 'active' : ''} />
-    </StyledIconButton>
+    <TooltipWrapper content="Members list" direction="bottom">
+      <StyledIconButton onClick={onMembersToggleClick}>
+        <PeopleIcon className={isMembersListActive ? 'active' : ''} />
+      </StyledIconButton>
+    </TooltipWrapper>
 
     <HeaderSearchBar />
 
     <div className="divider" />
 
-    <StyledIconButton>
-      <MentionIcon />
-    </StyledIconButton>
+    <TooltipWrapper content="Mentions" direction="bottom">
+      <StyledIconButton>
+        <MentionIcon />
+      </StyledIconButton>
+    </TooltipWrapper>
 
-    <StyledIconButton>
-      <QuestionMarkIcon />
-    </StyledIconButton>
+    <TooltipWrapper content="Help" direction="bottom">
+      <StyledIconButton>
+        <QuestionMarkIcon />
+      </StyledIconButton>
+    </TooltipWrapper>
   </StyledHeaderActionBar>
 );

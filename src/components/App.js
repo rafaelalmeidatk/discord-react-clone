@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Channels from './Channels';
 import Chat from './Chat';
 import MemberCardPopup from './MemberCardPopup';
+import TooltipsContainer from './Tooltip/TooltipsContainer';
 
 import data from '../data';
 
@@ -120,6 +121,11 @@ class App extends React.Component {
           messages={selectedChannelData.messages}
         />
 
+        <TooltipsContainer
+          ref={node => {
+            TooltipsContainer.instance = TooltipsContainer.instance || node;
+          }}
+        />
         <MemberCardPopup
           guildRolesList={selectedGuild ? selectedGuild.roles : []}
           ref={node => {

@@ -5,6 +5,7 @@ import UserAvatar from '../UserAvatar';
 import UnmuteIcon from '../../icons/Unmute';
 import HeadphonesIcon from '../../icons/Headphones';
 import GearIcon from '../../icons/Gear';
+import { TooltipWrapper } from '../Tooltip';
 
 import colors from '../../utils/colors';
 import data from '../../data';
@@ -89,17 +90,23 @@ export default () => {
       </div>
 
       <div className="buttons">
-        <StyledIconButton>
-          <UnmuteIcon />
-        </StyledIconButton>
+        <TooltipWrapper content="Unmute" direction="top">
+          <StyledIconButton>
+            <UnmuteIcon />
+          </StyledIconButton>
+        </TooltipWrapper>
 
-        <StyledIconButton>
-          <HeadphonesIcon />
-        </StyledIconButton>
+        <TooltipWrapper content="Deafen" direction="top">
+          <StyledIconButton>
+            <HeadphonesIcon />
+          </StyledIconButton>
+        </TooltipWrapper>
 
-        <StyledIconButton>
-          <GearIcon />
-        </StyledIconButton>
+        <TooltipWrapper content="User Settings" direction="top">
+          <StyledIconButton>
+            <GearIcon />
+          </StyledIconButton>
+        </TooltipWrapper>
       </div>
     </StyledUserFooter>
   );
