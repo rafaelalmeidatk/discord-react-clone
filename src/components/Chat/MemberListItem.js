@@ -32,6 +32,10 @@ const StyledMember = styled.div`
     .status {
       color: ${colors.memberStatus};
       font-size: 0.7em;
+
+      strong {
+        font-weight: 800;
+      }
     }
   }
 `;
@@ -42,7 +46,11 @@ export default ({ member, color, onMemberClick }) => (
 
     <div className="member-inner">
       <div className="username">{member.username}</div>
-      {Math.random() > 0.6 ? <div className="status">Playing something</div> : null}
+      {member.activity && (
+        <div className="status">
+          Playing <strong>{member.activity.name}</strong>
+        </div>
+      )}
     </div>
   </StyledMember>
 );

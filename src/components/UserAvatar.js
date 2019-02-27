@@ -35,7 +35,7 @@ const StyledUserAvatar = styled.div`
     height: ${props => props.statusSize};
 
     background-clip: padding-box;
-    border-color: ${props => props.statusBorderColor || colors.grayNormal};
+    border-color: ${colors.grayNormal};
     border-style: solid;
     border-width: ${props => (props.isBig ? 3 : 2)}px;
     border-radius: 999px;
@@ -49,7 +49,7 @@ const StyledUserAvatar = styled.div`
   }
 `;
 
-export default ({ className, avatarUrl, isBig, fadeHover, customStatusBorderColor }) => {
+export default ({ className, avatarUrl, isBig, fadeHover }) => {
   const avatarSize = (isBig ? 90 : 30) + 'px';
   const statusSize = (isBig ? 18 : 10) + 'px';
 
@@ -60,7 +60,6 @@ export default ({ className, avatarUrl, isBig, fadeHover, customStatusBorderColo
       statusSize={statusSize}
       fadeHover={fadeHover}
       isBig={isBig}
-      statusBorderColor={customStatusBorderColor}
     >
       <div
         className="avatar"

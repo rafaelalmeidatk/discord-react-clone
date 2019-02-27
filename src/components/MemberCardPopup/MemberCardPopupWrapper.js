@@ -18,6 +18,7 @@ const fadeInAnimation = ({ direction }) => keyframes`
 
 const StyledMemberCardPopupWrapper = styled.div`
   position: absolute;
+  overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(32, 34, 37, 0.6);
   z-index: 1000;

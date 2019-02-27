@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MemberRolesList from './MemberRolesList';
+import GameActivity from './GameActivity';
 import UserAvatar from '../UserAvatar';
 
 import constants from '../../utils/constants';
@@ -13,11 +14,24 @@ const StyledMemberCard = styled.div`
   color: ${colors.memberCardContent};
 
   .header {
-    padding: 20px 10px;
-    background-color: ${colors.memberCardHeaderBackground};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: ${props =>
+      props.isPlaying
+        ? colors.memberCardHeaderPlayingBackground
+        : colors.memberCardHeaderBackground};
+
+    .avatar-wrapper .status {
+      border-color: ${props =>
+        props.isPlaying
+          ? colors.memberCardHeaderPlayingBackground
+          : colors.memberCardHeaderBackground};
+    }
+
+    .user-data {
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .username {
       margin-top: 10px;
@@ -101,18 +115,22 @@ const StyledMessageInput = styled.input`
 `;
 
 export default ({ member, guildRolesList }) => (
-  <StyledMemberCard>
+  <StyledMemberCard isPlaying={!!member.activity}>
     <div className="header">
-      <UserAvatar
-        avatarUrl={member.avatar}
-        customStatusBorderColor={colors.memberCardHeaderBackground}
-        isBig
-      />
+      <div className="user-data">
+        <UserAvatar
+          className="avatar-wrapper"
+          avatarUrl={member.avatar}
+          isBig
+        />
 
-      <div className="username">
-        {member.username}
-        <span className="tag">#{member.tag}</span>
+        <div className="username">
+          {member.username}
+          <span className="tag">#{member.tag}</span>
+        </div>
       </div>
+
+      {member.activity && <GameActivity activity={member.activity} />}
     </div>
 
     <div className="content">

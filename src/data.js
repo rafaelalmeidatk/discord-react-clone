@@ -209,22 +209,22 @@ export default {
       },
       members: [
         { userId: 1, roles: [11, 12] },
-        { userId: 2, roles: [11] },
+        { userId: 2, roles: [] },
         { userId: 3, roles: [12] },
         { userId: 4, roles: [] },
         { userId: 5, roles: [] },
         { userId: 6, roles: [] },
-        { userId: 7, roles: [13] },
-        { userId: 8, roles: [13] },
+        { userId: 7, roles: [] },
+        { userId: 8, roles: [] },
         { userId: 9, roles: [] },
         { userId: 10, roles: [] },
         { userId: 11, roles: [] },
         { userId: 12, roles: [] },
-        { userId: 13, roles: [] },
+        { userId: 13, roles: [11] },
         { userId: 14, roles: [] },
         { userId: 15, roles: [] },
-        { userId: 16, roles: [] },
-        { userId: 17, roles: [] },
+        { userId: 16, roles: [13] },
+        { userId: 17, roles: [13] },
         { userId: 18, roles: [] },
         { userId: 19, roles: [] },
         { userId: 20, roles: [] }
@@ -313,14 +313,14 @@ export default {
       },
       members: [
         { userId: 1, roles: [] },
-        { userId: 3, roles: [11] },
+        { userId: 3, roles: [] },
         { userId: 4, roles: [12] },
         { userId: 5, roles: [12] },
         { userId: 6, roles: [13] },
         { userId: 7, roles: [] },
         { userId: 8, roles: [] },
         { userId: 9, roles: [] },
-        { userId: 10, roles: [] },
+        { userId: 10, roles: [11] },
         { userId: 11, roles: [] },
         { userId: 12, roles: [] },
         { userId: 13, roles: [] },
@@ -666,62 +666,112 @@ export default {
       id: 1,
       username: 'rafaelalmeidatk',
       tag: 7126,
-      avatar: 'https://i.imgur.com/cnAtbiX.png'
+      avatar: 'https://i.imgur.com/cnAtbiX.png',
+      activity: {
+        type: 'game',
+        name: 'Apex Legends',
+        duration: 'for 2 hours'
+      }
     },
     2: {
       id: 2,
       username: 'dodge',
       tag: 3948,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/40hUu.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/40hUu.jpg',
+      activity: {
+        type: 'game',
+        name: 'Overwatch',
+        duration: 'for 3 hours'
+      }
     },
     3: {
       id: 3,
       username: 'moustache',
       tag: 5249,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/pLnXb.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/pLnXb.jpg',
+      activity: {
+        type: 'game',
+        name: 'Overwatch',
+        duration: 'for 3 hours'
+      }
     },
     4: {
       id: 4,
       username: 'dice',
       tag: 2183,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/20170429_094413.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/20170429_094413.jpg',
+      activity: {
+        type: 'game',
+        name: 'RuneScape',
+        duration: 'for 43 minutes'
+      }
     },
     5: {
       id: 5,
       username: 'blender',
       tag: 8613,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/ugvmx.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/ugvmx.jpg',
+      activity: {
+        type: 'game',
+        name: 'MapleStory',
+        duration: 'for 5 hours'
+      }
     },
     6: {
       id: 6,
       username: 'freefall',
       tag: 5485,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160629_130809.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160629_130809.jpg',
+      activity: {
+        type: 'game',
+        name: 'Dota 2',
+        duration: 'for 17 minutes'
+      }
     },
     7: {
       id: 7,
       username: 'moist',
       tag: 8007,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/TcEeO.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/TcEeO.jpg',
+      activity: {
+        type: 'game',
+        name: 'FINAL FANTASY XIV',
+        duration: 'for 6 hours'
+      }
     },
 
     8: {
       id: 8,
       username: 'lucy',
       tag: 4521,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/1219.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/1219.jpg',
+      activity: {
+        type: 'game',
+        name: 'League of Legends',
+        duration: 'for 49 minutes'
+      }
     },
     9: {
       id: 9,
       username: 'bind',
       tag: 8745,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160202053446.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160202053446.jpg',
+      activity: {
+        type: 'game',
+        name: 'Dead Cells',
+        duration: 'for 31 minutes'
+      }
     },
     10: {
       id: 10,
       username: 'ruth',
       tag: 6547,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/diFls.jpg'
+      avatar: 'https://purr.objects-us-east-1.dream.io/i/diFls.jpg',
+      activity: {
+        type: 'game',
+        name: 'Fortnite',
+        duration: 'for 2 hours'
+      }
     },
     11: {
       id: 11,

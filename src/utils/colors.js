@@ -36,6 +36,7 @@ export default {
   scrollbarTinyThumbBackground: 'rgba(32, 34, 37, 0.6)',
 
   memberCardHeaderBackground: '#202225',
+  memberCardHeaderPlayingBackground: '#7289da',
   memberCardBackground: '#2f3136',
   memberCardContent: 'hsla(0,0%,100%,.8)',
   memberCardUserTag: 'hsla(0, 0%, 100%, 0.6)',
