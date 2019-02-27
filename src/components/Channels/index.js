@@ -21,9 +21,35 @@ const StyledHeader = styled.div`
   align-items: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   color: #fff;
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
+
+  &.hasHover:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const StyledChannelHeaderContent = styled.div`
+  flex: 1;
+
+  padding: 0 12px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .guild-name {
-    padding: 0 12px 0 16px;
+    margin-top: 1px;
+  }
+
+  svg {
+    margin-top: 3px;
+    opacity: .6;
+
+    path {
+      stroke-dasharray: 7;
+      stroke-dashoffset: 1;
+      stroke-width: 2px;
+    }
   }
 `;
 
@@ -41,7 +67,7 @@ const StyledSearchBar = styled.input`
   color: #b9bbbe;
 
   ::placeholder {
-    opacity: .6;
+    opacity: 0.6;
   }
 `;
 
@@ -57,7 +83,19 @@ class Channels extends React.Component {
     if (showPrivateChannels) {
       return <StyledSearchBar placeholder="Find or start a conversation" />;
     }
-    return <div className="guild-name">{guild.name}</div>;
+
+    return (
+      <StyledChannelHeaderContent>
+        <div className="guild-name">{guild.name}</div>
+        <svg width="18" height="18">
+          <g fill="none" fillRule="evenodd">
+            <path d="M0 0h18v18H0" />
+            <path stroke="#FFF" d="M4.5 4.5l9 9" strokeLinecap="round" />
+            <path stroke="#FFF" d="M13.5 4.5l-9 9" strokeLinecap="round" />
+          </g>
+        </svg>
+      </StyledChannelHeaderContent>
+    );
   };
 
   render() {
@@ -65,7 +103,9 @@ class Channels extends React.Component {
 
     return (
       <StyledChannels>
-        <StyledHeader>{this.getHeaderContent()}</StyledHeader>
+        <StyledHeader className={!showPrivateChannels && 'hasHover'}>
+          {this.getHeaderContent()}
+        </StyledHeader>
 
         <StyledContent>
           <ScrollableArea forceVertical tinyStyle autoHide>
