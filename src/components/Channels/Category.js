@@ -5,27 +5,39 @@ import PlusAlt from '../../icons/PlusAlt';
 import Channel from './Channel';
 import ExpandArrowIcon from '../../icons/ExpandArrow';
 
+import colors from '../../utils/colors';
+
 const StyledCategory = styled.div`
   padding-top: 28px;
 `;
 
 const StyledCategoryHeading = styled.div`
+  padding: 0 8px 0 18px;
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8px 0 18px;
 
+  cursor: pointer;
   text-transform: uppercase;
   font-size: 0.8em;
   font-weight: 700;
-  color: #72767d;
+  color: ${colors.channelName};
 
   > svg {
-    color: #72767d;
+    color: ${colors.channelName};
     position: absolute;
     left: 3px;
     top: 2px;
+    transform: rotateZ(${props => (props.isCollapsed ? 270 : 0)}deg);
+  }
+
+  :hover {
+    color: ${colors.channelHoveredText};
+    > svg {
+      color: ${colors.channelHoveredText};
+    }
   }
 `;
 
@@ -39,28 +51,50 @@ const StyledAddButton = styled.button`
   cursor: pointer;
 
   svg * {
-    fill: #72767d;
+    fill: ${colors.channelName};
   }
 `;
 
-export default ({ name, channels, guildId, selectedChannelId, onChannelClick }) => (
-  <StyledCategory>
-    <StyledCategoryHeading>
-      <ExpandArrowIcon />
-      {name}
+export default class Category extends React.Component {
+  state = {
+    isCollapsed: false
+  };
 
-      <StyledAddButton>
-        <PlusAlt />
-      </StyledAddButton>
-    </StyledCategoryHeading>
+  toggleCollapse = () => {
+    this.setState({ isCollapsed: !this.state.isCollapsed });
+  };
 
-    {channels.map(channel => (
-      <Channel
-        key={channel.id}
-        name={channel.name}
-        isSelected={selectedChannelId === channel.id}
-        onClick={() => onChannelClick(guildId, channel.id)}
-      />
-    ))}
-  </StyledCategory>
-);
+  render() {
+    const { name, channels, guildId, selectedChannelId, onChannelClick } = this.props;
+    const { isCollapsed } = this.state;
+
+    return (
+      <StyledCategory>
+        <StyledCategoryHeading onClick={this.toggleCollapse} isCollapsed={isCollapsed}>
+          <ExpandArrowIcon />
+          {name}
+
+          <StyledAddButton>
+            <PlusAlt />
+          </StyledAddButton>
+        </StyledCategoryHeading>
+
+        {channels.map(channel => {
+          const isSelected = selectedChannelId === channel.id;
+          const render = !isCollapsed || isSelected;
+
+          return (
+            render && (
+              <Channel
+                key={channel.id}
+                name={channel.name}
+                isSelected={isSelected}
+                onClick={() => onChannelClick(guildId, channel.id)}
+              />
+            )
+          );
+        })}
+      </StyledCategory>
+    );
+  }
+}

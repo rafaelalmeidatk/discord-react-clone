@@ -10,10 +10,10 @@ export default {
   grayDarker: '#202225',
   separator: '#2f3136',
 
+  channelName: '#72767d',
   channelSelected: 'rgba(79, 84, 92, .6)',
   channelHoveredText: '#b9bbbe',
 
-  privateChannelName: '#72767d',
   privateChannelSelectedBackground: 'rgba(79, 84, 92, .6)',
 
   channelsUserFooterBackground: 'rgba(32, 34, 37, .3)',

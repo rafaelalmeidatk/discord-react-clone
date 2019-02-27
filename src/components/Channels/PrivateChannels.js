@@ -67,7 +67,7 @@ const StyledChannel = styled.div`
   }
 
   span {
-    color: ${colors.privateChannelName};
+    color: ${colors.channelName};
   }
 
   .avatar-wrapper {
