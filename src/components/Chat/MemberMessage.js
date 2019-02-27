@@ -49,6 +49,11 @@ const StyledMessage = styled.div`
       background-position: center;
       overflow: hidden;
       border-radius: 50%;
+      transition: .1s opacity ease-in;
+
+      :hover {
+        opacity: 0.85;
+      }
     }
 
     .username {

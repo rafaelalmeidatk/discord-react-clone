@@ -10,6 +10,11 @@ const StyledUserAvatar = styled.div`
   margin-right: 10px;
   position: relative;
   box-sizing: content-box;
+  transition: .1s opacity ease-in;
+
+  :hover {
+    opacity: ${props => (props.fadeHover ? 0.85 : 1)};
+  }
 
   .avatar {
     width: ${props => props.size};
@@ -18,6 +23,10 @@ const StyledUserAvatar = styled.div`
     background-position: center;
     border-radius: 50%;
     overflow: hidden;
+  }
+
+  .fadeHover:hover {
+    opacity: 0.9;
   }
 
   .status {
@@ -40,7 +49,7 @@ const StyledUserAvatar = styled.div`
   }
 `;
 
-export default ({ className, avatarUrl, isBig, customStatusBorderColor }) => {
+export default ({ className, avatarUrl, isBig, fadeHover, customStatusBorderColor }) => {
   const avatarSize = (isBig ? 90 : 30) + 'px';
   const statusSize = (isBig ? 18 : 10) + 'px';
 
@@ -49,6 +58,7 @@ export default ({ className, avatarUrl, isBig, customStatusBorderColor }) => {
       className={className}
       size={avatarSize}
       statusSize={statusSize}
+      fadeHover={fadeHover}
       isBig={isBig}
       statusBorderColor={customStatusBorderColor}
     >

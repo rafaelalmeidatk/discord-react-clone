@@ -21,6 +21,10 @@ const StyledUserFooter = styled.div`
   background: ${colors.channelsUserFooterBackground};
   font-weight: 400;
 
+  .avatar-wrapper {
+    cursor: pointer;
+  }
+
   .content {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -82,7 +86,7 @@ export default () => {
 
   return (
     <StyledUserFooter>
-      <UserAvatar avatarUrl={user.avatar} />
+      <UserAvatar className="avatar-wrapper" avatarUrl={user.avatar} fadeHover />
 
       <div className="content">
         <div className="username">{user.username}teste</div>

@@ -43,7 +43,7 @@ const StyledChannelHeaderContent = styled.div`
 
   svg {
     margin-top: 3px;
-    opacity: .6;
+    opacity: 0.6;
 
     path {
       stroke-dasharray: 7;
