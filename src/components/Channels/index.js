@@ -77,9 +77,8 @@ const StyledContent = styled.div`
   position: relative;
 `;
 
-class Channels extends React.Component {
-  getHeaderContent = () => {
-    const { showPrivateChannels, guild } = this.props;
+const Channels = ({ showPrivateChannels, guild, selectedChannelId, onChannelClick }) => {
+  const getHeaderContent = () => {
     if (showPrivateChannels) {
       return <StyledSearchBar placeholder="Find or start a conversation" />;
     }
@@ -98,43 +97,39 @@ class Channels extends React.Component {
     );
   };
 
-  render() {
-    const { showPrivateChannels, guild, selectedChannelId, onChannelClick } = this.props;
+  return (
+    <StyledChannels>
+      <StyledHeader className={!showPrivateChannels && 'hasHover'}>
+        {getHeaderContent()}
+      </StyledHeader>
 
-    return (
-      <StyledChannels>
-        <StyledHeader className={!showPrivateChannels && 'hasHover'}>
-          {this.getHeaderContent()}
-        </StyledHeader>
+      <StyledContent>
+        <ScrollableArea forceVertical tinyStyle autoHide>
+          {showPrivateChannels && (
+            <PrivateChannels
+              selectedChannelId={selectedChannelId}
+              onChannelClick={onChannelClick}
+            />
+          )}
 
-        <StyledContent>
-          <ScrollableArea forceVertical tinyStyle autoHide>
-            {showPrivateChannels && (
-              <PrivateChannels
+          {!showPrivateChannels &&
+            guild &&
+            guild.categories.map(category => (
+              <Category
+                key={category.id}
+                name={category.name}
+                channels={category.channels}
+                guildId={guild.id}
                 selectedChannelId={selectedChannelId}
                 onChannelClick={onChannelClick}
               />
-            )}
+            ))}
+        </ScrollableArea>
+      </StyledContent>
 
-            {!showPrivateChannels &&
-              guild &&
-              guild.categories.map(category => (
-                <Category
-                  key={category.id}
-                  name={category.name}
-                  channels={category.channels}
-                  guildId={guild.id}
-                  selectedChannelId={selectedChannelId}
-                  onChannelClick={onChannelClick}
-                />
-              ))}
-          </ScrollableArea>
-        </StyledContent>
-
-        <UserFooter />
-      </StyledChannels>
-    );
-  }
-}
+      <UserFooter />
+    </StyledChannels>
+  );
+};
 
 export default Channels;

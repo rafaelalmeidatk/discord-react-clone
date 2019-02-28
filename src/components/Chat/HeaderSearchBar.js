@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import searchBarClearUrl from '../../icons/searchBarClear.svg';
@@ -91,41 +91,29 @@ const StyledHeaderSearchBar = styled.div`
   }
 `;
 
-export default class HeaderSearchBar extends React.Component {
-  state = {
-    text: ''
-  };
+const HeaderSearchBar = () => {
+  const [text, setText] = useState('');
+  const hasText = !!text;
 
-  handleTextChange = el => {
-    const { value } = el.target;
-    this.setState({ text: value });
-  };
-
-  handleClearClick = () => {
-    this.setState({ text: '' });
-  };
-
-  render() {
-    const hasText = !!this.state.text;
-
-    return (
-      <StyledHeaderSearchBar expanded={hasText}>
-        <div className="input-wrapper">
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={this.handleTextChange}
-            value={this.state.text}
-          />
-        </div>
-        <div className="icon-wrapper" role="button">
-          <i className={`searchBarEyeGlass ${!hasText ? 'visible' : ''}`} />
-          <i
-            className={`searchBarClear ${hasText ? 'visible' : ''}`}
-            onClick={this.handleClearClick}
-          />
-        </div>
-      </StyledHeaderSearchBar>
-    );
-  }
+  return (
+    <StyledHeaderSearchBar expanded={hasText}>
+      <div className="input-wrapper">
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+        />
+      </div>
+      <div className="icon-wrapper" role="button">
+        <i className={`searchBarEyeGlass ${!hasText ? 'visible' : ''}`} />
+        <i
+          className={`searchBarClear ${hasText ? 'visible' : ''}`}
+          onClick={() => setText('')}
+        />
+      </div>
+    </StyledHeaderSearchBar>
+  );
 }
+
+export default HeaderSearchBar;

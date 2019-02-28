@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import data from '../../data';
 import { MemberMessageGroup, Message } from './MemberMessage';
 import WelcomeChannelMessage from './WelcomeChannelMessage';
 import ScrollableArea from '../ScrollableArea';
-
 import MemberCardPopup from '../MemberCardPopup';
+
+import data from '../../data';
 
 const StyledMessagesWrapper = styled.div`
   flex: 1 1 auto;
@@ -25,22 +25,14 @@ const createMessageGroup = (groupId, guild, member, time, onMemberClick, message
   </MemberMessageGroup>
 );
 
-export default class MessagesWrapper extends React.Component {
-  bottomElement = React.createRef();
+const MessagesWrapper = ({ channelName, guild, messages }) => {
+  const bottomElement = useRef(null);
 
-  componentDidMount() {
-    this.scrollToBottom();
-  }
+  useLayoutEffect(() => {
+    bottomElement.current.scrollIntoView({ behavior: 'instant' });
+  });
 
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom = () => {
-    this.bottomElement.current.scrollIntoView();
-  };
-
-  handleMemberClick = (element, member) => {
+  const handleMemberClick = (element, member) => {
     const { target } = element;
     const targetRect = target.getBoundingClientRect();
     MemberCardPopup.show({
@@ -50,62 +42,61 @@ export default class MessagesWrapper extends React.Component {
     });
   };
 
-  render() {
-    const { channelName, guild, messages } = this.props;
-    let lastUserId = messages.length > 0 ? messages[0].userId : null;
-    const groupsComponents = [];
-    let messagesComponents = [];
-    let headingGroupMessage = null;
+  let lastUserId = messages.length > 0 ? messages[0].userId : null;
+  const groupsComponents = [];
+  let messagesComponents = [];
+  let headingGroupMessage = null;
 
-    const closeMessageGroupAndClearMessages = () => {
-      const userId = headingGroupMessage.userId;
-      const guildMembers = guild ? guild.members : [];
-      const guildMember = guildMembers.find(m => m.userId === userId);
-      const member = {
-        ...data.users[headingGroupMessage.userId],
-        roles: guildMember ? guildMember.roles : null
-      };
-
-      const currentGroupId = headingGroupMessage.id;
-      groupsComponents.push(
-        createMessageGroup(
-          currentGroupId,
-          guild,
-          member,
-          headingGroupMessage.time,
-          this.handleMemberClick,
-          messagesComponents
-        )
-      );
-      messagesComponents = [];
+  const closeMessageGroupAndClearMessages = () => {
+    const userId = headingGroupMessage.userId;
+    const guildMembers = guild ? guild.members : [];
+    const guildMember = guildMembers.find(m => m.userId === userId);
+    const member = {
+      ...data.users[headingGroupMessage.userId],
+      roles: guildMember ? guildMember.roles : null
     };
 
-    messages.forEach((message, index) => {
-      const { userId } = message;
-
-      if (userId !== lastUserId && messagesComponents.length > 0) {
-        closeMessageGroupAndClearMessages();
-      }
-
-      if (messagesComponents.length === 0) {
-        headingGroupMessage = message;
-      }
-      messagesComponents.push(<Message key={message.id}>{message.content}</Message>);
-      lastUserId = message.userId;
-
-      if (index + 1 === messages.length) {
-        closeMessageGroupAndClearMessages();
-      }
-    });
-
-    return (
-      <StyledMessagesWrapper>
-        <ScrollableArea>
-          <WelcomeChannelMessage channelName={channelName} />
-          {groupsComponents}
-          <div ref={this.bottomElement} />
-        </ScrollableArea>
-      </StyledMessagesWrapper>
+    const currentGroupId = headingGroupMessage.id;
+    groupsComponents.push(
+      createMessageGroup(
+        currentGroupId,
+        guild,
+        member,
+        headingGroupMessage.time,
+        handleMemberClick,
+        messagesComponents
+      )
     );
-  }
-}
+    messagesComponents = [];
+  };
+
+  messages.forEach((message, index) => {
+    const { userId } = message;
+
+    if (userId !== lastUserId && messagesComponents.length > 0) {
+      closeMessageGroupAndClearMessages();
+    }
+
+    if (messagesComponents.length === 0) {
+      headingGroupMessage = message;
+    }
+    messagesComponents.push(<Message key={message.id}>{message.content}</Message>);
+    lastUserId = message.userId;
+
+    if (index + 1 === messages.length) {
+      closeMessageGroupAndClearMessages();
+    }
+  });
+
+  return (
+    <StyledMessagesWrapper>
+      <ScrollableArea>
+        <WelcomeChannelMessage channelName={channelName} />
+        {groupsComponents}
+        <div ref={bottomElement} />
+      </ScrollableArea>
+    </StyledMessagesWrapper>
+  );
+};
+
+export default MessagesWrapper;

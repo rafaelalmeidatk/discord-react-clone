@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import PlusAlt from '../../icons/PlusAlt';
@@ -55,46 +55,37 @@ const StyledAddButton = styled.button`
   }
 `;
 
-export default class Category extends React.Component {
-  state = {
-    isCollapsed: false
-  };
+const Category = ({ name, channels, guildId, selectedChannelId, onChannelClick }) => {
+  const [isCollapsed, setCollapsed] = useState(false);
 
-  toggleCollapse = () => {
-    this.setState({ isCollapsed: !this.state.isCollapsed });
-  };
+  return (
+    <StyledCategory>
+      <StyledCategoryHeading onClick={() => setCollapsed(!isCollapsed)} isCollapsed={isCollapsed}>
+        <ExpandArrowIcon />
+        {name}
 
-  render() {
-    const { name, channels, guildId, selectedChannelId, onChannelClick } = this.props;
-    const { isCollapsed } = this.state;
+        <StyledAddButton>
+          <PlusAlt />
+        </StyledAddButton>
+      </StyledCategoryHeading>
 
-    return (
-      <StyledCategory>
-        <StyledCategoryHeading onClick={this.toggleCollapse} isCollapsed={isCollapsed}>
-          <ExpandArrowIcon />
-          {name}
+      {channels.map(channel => {
+        const isSelected = selectedChannelId === channel.id;
+        const render = !isCollapsed || isSelected;
 
-          <StyledAddButton>
-            <PlusAlt />
-          </StyledAddButton>
-        </StyledCategoryHeading>
+        return (
+          render && (
+            <Channel
+              key={channel.id}
+              name={channel.name}
+              isSelected={isSelected}
+              onClick={() => onChannelClick(guildId, channel.id)}
+            />
+          )
+        );
+      })}
+    </StyledCategory>
+  );
+};
 
-        {channels.map(channel => {
-          const isSelected = selectedChannelId === channel.id;
-          const render = !isCollapsed || isSelected;
-
-          return (
-            render && (
-              <Channel
-                key={channel.id}
-                name={channel.name}
-                isSelected={isSelected}
-                onClick={() => onChannelClick(guildId, channel.id)}
-              />
-            )
-          );
-        })}
-      </StyledCategory>
-    );
-  }
-}
+export default Category;

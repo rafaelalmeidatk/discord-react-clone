@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import MemberCard from './MemberCard';
@@ -29,31 +29,30 @@ const StyledMemberCardPopupWrapper = styled.div`
   animation: ${props => fadeInAnimation} ease-in 0.1s forwards;
 `;
 
-export default class MemberCardPopupWrapper extends React.Component {
-  node = React.createRef();
+const MemberCardPopupWrapper = ({ direction, position, member, guildRolesList, onClose }) => {
+  const node = useRef(null);
 
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleDocumentClick, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleDocumentClick, false);
-  }
-
-  handleDocumentClick = e => {
-    if (this.node.current.contains(e.target)) {
+  const handleDocumentClick = e => {
+    if (node.current.contains(e.target)) {
       return;
     }
 
-    this.props.onClose();
+    onClose();
   };
 
-  render() {
-    const { direction, position, member, guildRolesList } = this.props;
-    return (
-      <StyledMemberCardPopupWrapper ref={this.node} direction={direction} position={position}>
-        <MemberCard member={member} guildRolesList={guildRolesList} />
-      </StyledMemberCardPopupWrapper>
-    );
-  }
-}
+  useEffect(() => {
+    document.addEventListener('mousedown', handleDocumentClick, false);
+
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick, false);
+    };
+  }, []);
+
+  return (
+    <StyledMemberCardPopupWrapper ref={node} direction={direction} position={position}>
+      <MemberCard member={member} guildRolesList={guildRolesList} />
+    </StyledMemberCardPopupWrapper>
+  );
+};
+
+export default MemberCardPopupWrapper;

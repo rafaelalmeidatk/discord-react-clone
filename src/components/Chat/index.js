@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import ContentHeader from '../ContentHeader';
@@ -31,17 +31,14 @@ const StyledChat = styled.div`
   }
 `;
 
-class Chat extends React.Component {
-  state = {
-    membersListVisible: true
+const Chat = ({ className, isPrivate, channelName, guild, messages }) => {
+  const [membersListVisible, setMembersListVisible] = useState(true);
+
+  const toggleMembersListVisible = () => {
+    setMembersListVisible(!membersListVisible);
   };
 
-  toggleMembersListVisible = () => {
-    this.setState({ membersListVisible: !this.state.membersListVisible });
-  };
-
-  handleMemberListMemberClick = (element, member) => {
-    const { guild } = this.props;
+  const handleMemberListMemberClick = (element, member) => {
     const guildMember = guild.members.find(m => m.userId === member.id);
     const memberWithRoles = {
       ...member,
@@ -57,38 +54,39 @@ class Chat extends React.Component {
     });
   };
 
-  render() {
-    const { className, isPrivate, channelName, guild, messages } = this.props;
+  return (
+    <StyledChat className={className}>
+      <ContentHeader
+        content={<ChannelName name={channelName} isHeader isUser={isPrivate} textColor="#fff" />}
+        rightContent={
+          <HeaderActionBar
+            isMembersListActive={membersListVisible}
+            onMembersToggleClick={toggleMembersListVisible}
+          />
+        }
+      />
 
-    return (
-      <StyledChat className={className}>
-        <ContentHeader
-          content={<ChannelName name={channelName} isHeader isUser={isPrivate} textColor="#fff" />}
-          rightContent={
-            <HeaderActionBar
-              isMembersListActive={this.state.membersListVisible}
-              onMembersToggleClick={this.toggleMembersListVisible}
-            />
-          }
-        />
-
-        <div className="content-wrapper">
-          <div className="messages-container">
-            <MessagesWrapper guild={guild} messages={messages} channelName={channelName} isPrivate={isPrivate} />
-            <NewMessageWrapper channelName={channelName} isPrivate={isPrivate} />
-          </div>
-
-          {!isPrivate && this.state.membersListVisible && (
-            <MembersList
-              guildRolesList={guild.roles}
-              members={guild.members}
-              onMemberClick={this.handleMemberListMemberClick}
-            />
-          )}
+      <div className="content-wrapper">
+        <div className="messages-container">
+          <MessagesWrapper
+            guild={guild}
+            messages={messages}
+            channelName={channelName}
+            isPrivate={isPrivate}
+          />
+          <NewMessageWrapper channelName={channelName} isPrivate={isPrivate} />
         </div>
-      </StyledChat>
-    );
-  }
-}
+
+        {!isPrivate && membersListVisible && (
+          <MembersList
+            guildRolesList={guild.roles}
+            members={guild.members}
+            onMemberClick={handleMemberListMemberClick}
+          />
+        )}
+      </div>
+    </StyledChat>
+  );
+};
 
 export default Chat;

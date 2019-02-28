@@ -1,11 +1,8 @@
 import React from 'react';
-
 import TooltipsContainer from './TooltipsContainer';
 
-export default class TooltipWrapper extends React.Component {
-  handleMouseEnter = element => {
-    const { direction, content } = this.props;
-
+const TooltipWrapper = ({ direction, content, children }) => {
+  const handleMouseEnter = element => {
     const { currentTarget: target } = element;
     const targetRect = target.getBoundingClientRect();
 
@@ -33,18 +30,16 @@ export default class TooltipWrapper extends React.Component {
     });
   };
 
-  handleMouseLeave = () => {
+  const handleMouseLeave = () => {
     TooltipsContainer.hide();
   };
 
-  render() {
-    const { children } = this.props;
+  return React.Children.map(children, child =>
+    React.cloneElement(child, {
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave
+    })
+  );
+};
 
-    return React.Children.map(children, child =>
-      React.cloneElement(child, {
-        onMouseEnter: this.handleMouseEnter,
-        onMouseLeave: this.handleMouseLeave
-      })
-    );
-  }
-}
+export default TooltipWrapper;

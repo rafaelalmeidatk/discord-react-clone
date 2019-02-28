@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const EMOJIS_COUNT = 50;
@@ -39,25 +39,22 @@ const StyledEmojiPickerButton = styled.button`
   }
 `;
 
-export default class EmojiPickerButton extends React.Component {
-  state = {
-    index: 0
+const EmojiPickerButton = () => {
+  const [index, setIndex] = useState(0);
+
+  const pickRandomIndex = () => {
+    setIndex(Math.floor(Math.random() * EMOJIS_COUNT));
   };
 
-  pickRandomIndex = () => {
-    this.setState({ index: Math.floor(Math.random() * EMOJIS_COUNT) });
-  };
+  const x = (index % EMOJIS_COLUMNS) * ITEM_SIZE;
+  const y = Math.floor(index / EMOJIS_COLUMNS) * ITEM_SIZE;
+  const backgroundPosition = `-${x}px -${y}px`;
 
-  render() {
-    const { index } = this.state;
-    const x = (index % EMOJIS_COLUMNS) * ITEM_SIZE;
-    const y = Math.floor(index / EMOJIS_COLUMNS) * ITEM_SIZE;
-    const backgroundPosition = `-${x}px -${y}px`;
+  return (
+    <StyledEmojiPickerButton onMouseEnter={pickRandomIndex}>
+      <div className="sprite" style={{ backgroundPosition }} />
+    </StyledEmojiPickerButton>
+  );
+};
 
-    return (
-      <StyledEmojiPickerButton onMouseEnter={this.pickRandomIndex}>
-        <div className="sprite" style={{ backgroundPosition }} />
-      </StyledEmojiPickerButton>
-    );
-  }
-}
+export default EmojiPickerButton;
