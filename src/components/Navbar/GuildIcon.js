@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/colors';
-import DiscordIcon from '../../icons/discord.js';
+import DiscordIcon from '../../icons/Discord';
 
 const StyledGuildIcon = styled.a.attrs({ href: '#' })`
   margin-top: 10px;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import AtIcon from '../icons/At';
-import HashtagIcon from '../icons/hashtag';
+import HashtagIcon from '../icons/Hashtag';
 
 const StyledChannelName = styled.div`
   display: flex;
