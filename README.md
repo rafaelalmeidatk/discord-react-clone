@@ -1,6 +1,6 @@
 # Discord React Clone
 
-![Preview](https://i.imgur.com/gU30YWl.mp4)
+![Preview](https://i.imgur.com/0UpCir4.gif)
 
 This project is a front-end replication of Discord's app made with React. This is not a full replication so I added the most used parts of the app.
 
