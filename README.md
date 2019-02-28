@@ -10,7 +10,7 @@ Some observations:
 * The styled scrollbars only work on webkit-based browsers
 * As it is a front-end only project, all the data is mocked in a single file
 * I don't have the official font that Discord utilizes so I utilized Catamaran instead, it is not very similar but isn't so bad
-* All arts (besides the cats) were extracted from the official app, all the rights belong to Discord
+* All arts (except the cats) were extracted from the official app, all the rights belong to Discord
 
 ## Running the project
 
