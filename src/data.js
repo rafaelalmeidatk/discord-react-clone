@@ -24,7 +24,12 @@ const randomMessages = [
   'dignissim vitae magna',
   'vitae nibh',
   'maecenas et imperdiet lectus',
-  'et pulvinar lacus vehicula nec'
+  'et pulvinar lacus vehicula nec',
+  'maecenas placerat in ex eget maximus',
+  'donec rutrum elit eget erat gravida, id accumsan nisl commodo',
+  'mauris vitae consectetur erat, non faucibus velit',
+  'quisque risus justo, pretium elementum efficitur ut',
+  'vivamus eleifend, ante id iaculis consequat, sem lectus commodo'
 ];
 
 const generateRandomMessagesFromRandomUsers = numOfMessages => {
@@ -131,7 +136,7 @@ export default {
             {
               id: 111123,
               name: 'welcome',
-              messages: [...generateRandomMessagesFromRandomUsers(2)]
+              messages: [...generateRandomMessagesFromGivenUsers(3, [13])]
             },
             {
               id: 111124,
@@ -245,7 +250,7 @@ export default {
             {
               id: 222223,
               name: 'rules',
-              messages: [...generateRandomMessagesFromRandomUsers(1)]
+              messages: [...generateRandomMessagesFromGivenUsers(5, [4])]
             },
             {
               id: 222224,
@@ -344,7 +349,7 @@ export default {
             {
               id: 333323,
               name: 'rules',
-              messages: [...generateRandomMessagesFromRandomUsers(1)]
+              messages: [...generateRandomMessagesFromGivenUsers(5, [5])]
             },
             {
               id: 333324,
@@ -413,10 +418,10 @@ export default {
     },
     {
       id: 4444,
-      name: 'Hearthstone',
-      initials: 'H',
+      name: 'Rocket League',
+      initials: 'RL',
       icon:
-        'https://cdn.discordapp.com/icons/127167843383902209/008469e0d4b7fa02a4d7824beaa8aa90.png?',
+        'https://cdn.discordapp.com/icons/152517096104919042/383e3ca0fd88b170be2f0e341562d013.png',
       welcomeChannelId: 444423,
       categories: [
         {
@@ -426,7 +431,7 @@ export default {
             {
               id: 444423,
               name: 'rules',
-              messages: [...generateRandomMessagesFromRandomUsers(1)]
+              messages: [...generateRandomMessagesFromGivenUsers(5, [5])]
             },
             {
               id: 444424,
@@ -506,7 +511,7 @@ export default {
             {
               id: 555523,
               name: 'rules',
-              messages: [...generateRandomMessagesFromRandomUsers(1)]
+              messages: [...generateRandomMessagesFromGivenUsers(5, [7])]
             },
             {
               id: 555524,
@@ -577,7 +582,7 @@ export default {
       id: 6666,
       name: 'Cats Nation',
       initials: 'CN',
-      icon: 'https://purr.objects-us-east-1.dream.io/i/OoAEJ.jpg',
+      icon: 'https://i.imgur.com/yuJR8BC.jpg',
       welcomeChannelId: 666623,
       categories: [
         {
@@ -587,7 +592,7 @@ export default {
             {
               id: 666623,
               name: 'rules',
-              messages: [...generateRandomMessagesFromRandomUsers(1)]
+              messages: [...generateRandomMessagesFromGivenUsers(5, [1])]
             },
             {
               id: 666624,
@@ -677,7 +682,7 @@ export default {
       id: 2,
       username: 'dodge',
       tag: 3948,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/40hUu.jpg',
+      avatar: 'https://i.imgur.com/29b0eSO.jpg',
       activity: {
         type: 'game',
         name: 'Overwatch',
@@ -688,7 +693,7 @@ export default {
       id: 3,
       username: 'moustache',
       tag: 5249,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/pLnXb.jpg',
+      avatar: 'https://i.imgur.com/rIarYNI.jpg',
       activity: {
         type: 'game',
         name: 'Overwatch',
@@ -699,7 +704,7 @@ export default {
       id: 4,
       username: 'dice',
       tag: 2183,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/20170429_094413.jpg',
+      avatar: 'https://i.imgur.com/nmnMYRm.jpg',
       activity: {
         type: 'game',
         name: 'RuneScape',
@@ -710,7 +715,7 @@ export default {
       id: 5,
       username: 'blender',
       tag: 8613,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/ugvmx.jpg',
+      avatar: 'https://i.imgur.com/a0Nh9zW.jpg',
       activity: {
         type: 'game',
         name: 'MapleStory',
@@ -721,7 +726,7 @@ export default {
       id: 6,
       username: 'freefall',
       tag: 5485,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160629_130809.jpg',
+      avatar: 'https://i.imgur.com/oUpVX6P.jpg',
       activity: {
         type: 'game',
         name: 'Dota 2',
@@ -732,7 +737,7 @@ export default {
       id: 7,
       username: 'moist',
       tag: 8007,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/TcEeO.jpg',
+      avatar: 'https://i.imgur.com/znHDeHS.jpg',
       activity: {
         type: 'game',
         name: 'FINAL FANTASY XIV',
@@ -744,7 +749,7 @@ export default {
       id: 8,
       username: 'lucy',
       tag: 4521,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/1219.jpg',
+      avatar: 'https://i.imgur.com/GB01AQ3.jpg',
       activity: {
         type: 'game',
         name: 'League of Legends',
@@ -755,7 +760,7 @@ export default {
       id: 9,
       username: 'bind',
       tag: 8745,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160202053446.jpg',
+      avatar: 'https://i.imgur.com/xLCqPHl.jpg',
       activity: {
         type: 'game',
         name: 'Dead Cells',
@@ -766,7 +771,7 @@ export default {
       id: 10,
       username: 'ruth',
       tag: 6547,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/diFls.jpg',
+      avatar: 'https://i.imgur.com/RBodTfR.jpg',
       activity: {
         type: 'game',
         name: 'Fortnite',
@@ -777,49 +782,49 @@ export default {
       id: 11,
       username: 'classic',
       tag: 2147,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/image1-10.jpg'
+      avatar: 'https://i.imgur.com/rEpierV.jpg'
     },
     12: {
       id: 12,
       username: 'nadir',
       tag: 1427,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/BPU3b.jpg'
+      avatar: 'https://i.imgur.com/UUIfwTJ.jpg'
     },
     13: {
       id: 13,
       username: 'socks',
       tag: 1235,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/bs3vdvb.jpg'
+      avatar: 'https://i.imgur.com/pSNBDMS.jpg'
     },
     14: {
       id: 14,
       username: 'wilson',
       tag: 8524,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20171005_180555.jpg'
+      avatar: 'https://i.imgur.com/Eca88PY.jpg'
     },
     15: {
       id: 15,
       username: 'board',
       tag: 7412,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/plLu5.jpg'
+      avatar: 'https://i.imgur.com/JQQ8YAp.jpg'
     },
     16: {
       id: 16,
       username: 'jolt',
       tag: 9635,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/img_20160828_102320.jpg'
+      avatar: 'https://i.imgur.com/L4FgyKp.jpg'
     },
     17: {
       id: 17,
       username: 'quark',
       tag: 8542,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/7UPgK.jpg'
+      avatar: 'https://i.imgur.com/qyu0m3J.jpg'
     },
     18: {
       id: 18,
       username: 'invent',
       tag: 7856,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/20160226_191246.jpeg'
+      avatar: 'https://i.imgur.com/RXBqm4G.jpg'
     },
     19: {
       id: 19,
@@ -831,7 +836,7 @@ export default {
       id: 20,
       username: 'stylus',
       tag: 6392,
-      avatar: 'https://purr.objects-us-east-1.dream.io/i/sVI1S.jpg'
+      avatar: 'https://i.imgur.com/TnLdsV4.jpg'
     }
   }
 };
