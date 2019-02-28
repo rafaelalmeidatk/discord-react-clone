@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/colors';
 
+import EmojiPickerButton from './EmojiPickerButton';
 import Gift from '../../icons/Gift';
 import GifPicker from '../../icons/GifPicker';
 
@@ -10,11 +11,12 @@ const StyledButtonsBar = styled.div`
   padding-right: 6px;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.button`
   background: 0;
   padding: 0;
   margin: 0;
   border: 0;
+  outline: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -55,5 +57,7 @@ export default () => (
         <GifPicker />
       </div>
     </ButtonContainer>
+
+    <EmojiPickerButton />
   </StyledButtonsBar>
 );
