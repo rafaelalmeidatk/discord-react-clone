@@ -23,8 +23,8 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
-    currentArea: 'HOME',
-    selectedGuildId: null,
+    currentArea: 'CHAT',
+    selectedGuildId: 1111,
     selectedChannelsId: {},
     selectedPrivateChannelId: 333
   };
