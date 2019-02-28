@@ -35,7 +35,7 @@ const StyledEmojiPickerButton = styled.button`
 
     transition: filter 0.1s ease-in-out, opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
     filter: grayscale(100%);
-    opacity: 0.5;
+    opacity: 0.3;
   }
 `;
 

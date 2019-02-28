@@ -163,7 +163,9 @@ export default ({ member, guildRolesList }) => (
     <div className="content">
       {member.roles && (
         <React.Fragment>
-          <div className="field-key roles-key">Role</div>
+          <div className="field-key roles-key">
+            {member.roles.length > 0 ? 'Roles' : 'No Roles'}
+          </div>
           <div className="field-value roles">
             <MemberRolesList rolesList={guildRolesList} memberRoles={member.roles} />
           </div>
