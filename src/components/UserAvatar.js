@@ -10,7 +10,7 @@ const StyledUserAvatar = styled.div`
   margin-right: 10px;
   position: relative;
   box-sizing: content-box;
-  transition: .1s opacity ease-in;
+  transition: 0.1s opacity ease-in;
 
   :hover {
     opacity: ${props => (props.fadeHover ? 0.85 : 1)};
@@ -49,7 +49,7 @@ const StyledUserAvatar = styled.div`
   }
 `;
 
-export default ({ className, avatarUrl, isBig, fadeHover }) => {
+export default ({ className, avatarUrl, isBig, fadeHover, children }) => {
   const avatarSize = (isBig ? 90 : 30) + 'px';
   const statusSize = (isBig ? 18 : 10) + 'px';
 
@@ -64,7 +64,9 @@ export default ({ className, avatarUrl, isBig, fadeHover }) => {
       <div
         className="avatar"
         style={{ backgroundImage: `url(${avatarUrl || constants.defaultAvatar})` }}
-      />
+      >
+        {children}
+      </div>
       <div className="status online" />
     </StyledUserAvatar>
   );

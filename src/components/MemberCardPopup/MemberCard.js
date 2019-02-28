@@ -19,11 +19,40 @@ const StyledMemberCard = styled.div`
         ? colors.memberCardHeaderPlayingBackground
         : colors.memberCardHeaderBackground};
 
-    .avatar-wrapper .status {
-      border-color: ${props =>
-        props.isPlaying
-          ? colors.memberCardHeaderPlayingBackground
-          : colors.memberCardHeaderBackground};
+    .avatar-wrapper {
+      cursor: pointer;
+
+      .status {
+        border-color: ${props =>
+          props.isPlaying
+            ? colors.memberCardHeaderPlayingBackground
+            : colors.memberCardHeaderBackground};
+      }
+
+      :hover .view-profile {
+        opacity: 1;
+      }
+    }
+
+    .view-profile {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-transform: uppercase;
+      font-size: 0.65em;
+      font-weight: 900;
+
+      transition: opacity 0.1s ease;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.75);
+      border-radius: 50%;
+      opacity: 0;
     }
 
     .user-data {
@@ -118,11 +147,9 @@ export default ({ member, guildRolesList }) => (
   <StyledMemberCard isPlaying={!!member.activity}>
     <div className="header">
       <div className="user-data">
-        <UserAvatar
-          className="avatar-wrapper"
-          avatarUrl={member.avatar}
-          isBig
-        />
+        <UserAvatar className="avatar-wrapper" avatarUrl={member.avatar} isBig>
+          <div className="view-profile">View Profile</div>
+        </UserAvatar>
 
         <div className="username">
           {member.username}

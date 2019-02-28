@@ -28,7 +28,7 @@ const StyledGuildIcon = styled.a.attrs({ href: '#' })`
     border: 1px dashed ${colors.addGuildBorder};
     color: ${colors.addGuildBorder};
 
-    font-weight: 300;
+    font-weight: 400;
     font-size: 2.1em;
 
     :hover {
