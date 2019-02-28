@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledRolesList = styled.ul`
+  margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
