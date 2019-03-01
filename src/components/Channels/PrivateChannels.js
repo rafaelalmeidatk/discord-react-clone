@@ -40,13 +40,21 @@ const StyledChannel = styled.div`
 
   &.active {
     background-color: ${colors.privateChannelSelectedBackground};
+
+    .avatar-wrapper .status {
+      border-color: rgb(68, 72, 78);
+    }
   }
 
-  :hover {
+  :hover .close {
+    display: block;
+  }
+
+  :hover:not(.active) {
     background-color: ${colors.grayLight};
 
-    .close {
-      display: block;
+    .avatar-wrapper .status {
+      border-color: ${colors.grayLight};
     }
   }
 
