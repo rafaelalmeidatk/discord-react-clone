@@ -27,7 +27,7 @@ const StyledScrollableArea = styled.div`
   }
 `;
 
-export default ({ children, forceVertical, tinyStyle, autoHide, invisible }) => (
+const ScrollableArea = ({ children, forceVertical, tinyStyle, autoHide, invisible }) => (
   <StyledScrollableArea>
     <div
       className={[
@@ -43,3 +43,5 @@ export default ({ children, forceVertical, tinyStyle, autoHide, invisible }) => 
     </div>
   </StyledScrollableArea>
 );
+
+export default ScrollableArea;

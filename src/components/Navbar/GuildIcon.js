@@ -61,7 +61,7 @@ const HomeIcon = styled(DiscordIcon)`
   padding: 5px;
 `;
 
-export default ({ name, icon, selected, isHome, isAdd, onClick, ...props }) => {
+const GuildIcon = ({ name, icon, selected, isHome, isAdd, onClick, ...props }) => {
   let content = name;
   if (isHome) {
     content = <HomeIcon />;
@@ -82,3 +82,5 @@ export default ({ name, icon, selected, isHome, isAdd, onClick, ...props }) => {
     </StyledGuildIcon>
   );
 };
+
+export default GuildIcon;

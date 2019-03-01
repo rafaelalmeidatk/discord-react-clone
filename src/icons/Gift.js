@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const GiftIcon = ({ className }) => (
   <svg name="Gift" className={className} width="16" height="16" viewBox="0 0 16 16">
     <path
       fill="currentColor"
@@ -9,3 +9,5 @@ export default ({ className }) => (
     />
   </svg>
 );
+
+export default GiftIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const AtIcon = ({ className }) => (
   <svg
     name="At"
     className={className}
@@ -16,3 +16,5 @@ export default ({ className }) => (
     />
   </svg>
 );
+
+export default AtIcon;

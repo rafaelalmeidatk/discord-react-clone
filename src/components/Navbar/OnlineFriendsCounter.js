@@ -8,4 +8,6 @@ const StyledCounter = styled.div`
   text-transform: uppercase;
 `;
 
-export default ({ online }) => <StyledCounter>{online} Online</StyledCounter>;
+const OnlineFriendsCounter = ({ online }) => <StyledCounter>{online} Online</StyledCounter>;
+
+export default OnlineFriendsCounter;

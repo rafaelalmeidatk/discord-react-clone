@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const UnmuteIcon = ({ className }) => (
   <svg className={className} width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd" transform="matrix(-1 0 0 1 24 0)">
       <rect width="24" height="24" />
@@ -14,3 +14,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default UnmuteIcon;

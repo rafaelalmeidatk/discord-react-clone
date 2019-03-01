@@ -23,8 +23,10 @@ const StyledChannel = styled.div`
   }
 `;
 
-export default ({ name, isSelected, onClick }) => (
+const Channel = ({ name, isSelected, onClick }) => (
   <StyledChannel isSelected={isSelected} onClick={onClick}>
     <ChannelName name={name} textColor={isSelected && '#fff'} />
   </StyledChannel>
 );
+
+export default Channel;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import colors from '../../utils/colors'
+import colors from '../../utils/colors';
 
 const StyledWelcomeChannelMessage = styled.div`
   margin: 0 20px;
@@ -21,8 +21,12 @@ const StyledWelcomeChannelMessage = styled.div`
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.02);
 `;
 
-export default ({ channelName }) => (
+const WelcomeChannelMessage = ({ channelName }) => (
   <StyledWelcomeChannelMessage>
-    <span>Welcome to the beginning of the <strong>#{channelName}</strong> channel.</span>
+    <span>
+      Welcome to the beginning of the <strong>#{channelName}</strong> channel.
+    </span>
   </StyledWelcomeChannelMessage>
 );
+
+export default WelcomeChannelMessage;

@@ -49,7 +49,7 @@ const StyledUserAvatar = styled.div`
   }
 `;
 
-export default ({ className, avatarUrl, isBig, fadeHover, children }) => {
+const UserAvatar = ({ className, avatarUrl, isBig, fadeHover, children }) => {
   const avatarSize = (isBig ? 90 : 30) + 'px';
   const statusSize = (isBig ? 18 : 10) + 'px';
 
@@ -71,3 +71,5 @@ export default ({ className, avatarUrl, isBig, fadeHover, children }) => {
     </StyledUserAvatar>
   );
 };
+
+export default UserAvatar;

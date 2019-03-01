@@ -92,7 +92,7 @@ const StyledChannel = styled.div`
   }
 `;
 
-export default ({ selectedChannelId, onChannelClick }) => (
+const PrivateChannels = ({ selectedChannelId, onChannelClick }) => (
   <StyledPrivateChannels>
     <StyledChannel>
       <ActivityIcon />
@@ -131,3 +131,5 @@ export default ({ selectedChannelId, onChannelClick }) => (
     })}
   </StyledPrivateChannels>
 );
+
+export default PrivateChannels;

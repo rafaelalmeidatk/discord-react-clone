@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const ActivityIcon = ({ className }) => (
   <svg name="Activity" className={className} width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <path
@@ -11,3 +11,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default ActivityIcon;

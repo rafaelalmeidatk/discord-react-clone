@@ -21,9 +21,11 @@ const StyledChannelName = styled.div`
   }
 `;
 
-export default ({ name, textColor, isHeader, isUser }) => (
+const ChannelName = ({ name, textColor, isHeader, isUser }) => (
   <StyledChannelName isHeader={isHeader} textColor={textColor}>
     {isUser ? <AtIcon /> : <HashtagIcon />}
     <span>{name}</span>
   </StyledChannelName>
 );
+
+export default ChannelName;

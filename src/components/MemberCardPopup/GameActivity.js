@@ -44,11 +44,11 @@ const StyledGameActivity = styled.div`
   }
 `;
 
-export default ({ activity }) => (
+const GameActivity = ({ activity }) => (
   <StyledGameActivity>
     <div className="description">Playing a game</div>
     <div className="info">
-      <div className="game-icon"></div>
+      <div className="game-icon" />
       <div className="game-info">
         <div className="name">{activity.name}</div>
         <div className="duration">{activity.duration}</div>
@@ -56,3 +56,5 @@ export default ({ activity }) => (
     </div>
   </StyledGameActivity>
 );
+
+export default GameActivity;

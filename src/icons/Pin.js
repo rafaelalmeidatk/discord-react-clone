@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const PinIcon = ({ className }) => (
   <svg name="Pin" className={className} width="16" height="16" viewBox="0 0 26 26">
     <g fill="none" fillRule="evenodd">
       <path d="M1 1h24v24H1" />
@@ -11,3 +11,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default PinIcon;

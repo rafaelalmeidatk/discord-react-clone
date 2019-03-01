@@ -13,9 +13,11 @@ const StyledContentHeader = styled.div`
   z-index: 99;
 `;
 
-export default ({ content, rightContent }) => (
+const ContentHeader = ({ content, rightContent }) => (
   <StyledContentHeader>
     <div>{content}</div>
     <div>{rightContent}</div>
   </StyledContentHeader>
 );
+
+export default ContentHeader;

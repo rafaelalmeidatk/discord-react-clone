@@ -40,7 +40,7 @@ const StyledMember = styled.div`
   }
 `;
 
-export default ({ member, color, onMemberClick }) => (
+const MemberListItem = ({ member, color, onMemberClick }) => (
   <StyledMember color={color} onClick={e => onMemberClick(e, member)}>
     <UserAvatar className="avatar-wrapper" avatarUrl={member.avatar} />
 
@@ -54,3 +54,5 @@ export default ({ member, color, onMemberClick }) => (
     </div>
   </StyledMember>
 );
+
+export default MemberListItem;

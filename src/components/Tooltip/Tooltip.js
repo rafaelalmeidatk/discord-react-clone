@@ -44,6 +44,8 @@ const StyledTooltip = styled.div`
   }
 `;
 
-export default ({ children, direction }) => (
+const Tooltip = ({ children, direction }) => (
   <StyledTooltip className={direction}>{children}</StyledTooltip>
 );
+
+export default Tooltip;

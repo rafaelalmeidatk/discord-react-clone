@@ -30,7 +30,7 @@ const GuildSeparator = styled.div`
   background: ${colors.separator};
 `;
 
-export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
+const Navbar = ({ onHomeClick, onGuildClick, selectedGuildId }) => (
   <StyledNavbar>
     <ScrollableArea invisible>
       <div className="content">
@@ -59,3 +59,5 @@ export default ({ onHomeClick, onGuildClick, selectedGuildId }) => (
     </ScrollableArea>
   </StyledNavbar>
 );
+
+export default Navbar;

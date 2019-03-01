@@ -26,7 +26,7 @@ const StyledRoleName = styled.div`
   white-space: nowrap;
 `;
 
-export default ({ guildRolesList, members, onMemberClick }) => {
+const MembersList = ({ guildRolesList, members, onMemberClick }) => {
   const roleSeparators = { online: { name: 'Online', members: [] } };
 
   members.forEach(member => {
@@ -88,3 +88,5 @@ export default ({ guildRolesList, members, onMemberClick }) => {
     </StyledMemberList>
   );
 };
+
+export default MembersList;

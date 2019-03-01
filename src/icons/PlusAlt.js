@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const PlusAltIcon = ({ className }) => (
   <svg className={className} width="18" height="18" viewBox="0 0 18 18">
     <polygon
       fillRule="nonzero"
@@ -9,3 +9,5 @@ export default ({ className }) => (
     />
   </svg>
 );
+
+export default PlusAltIcon;

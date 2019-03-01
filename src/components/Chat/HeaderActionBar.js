@@ -41,7 +41,7 @@ const StyledIconButton = styled.span`
   }
 `;
 
-export default ({ isMembersListActive, onMembersToggleClick }) => (
+const HeaderActionBar = ({ isMembersListActive, onMembersToggleClick }) => (
   <StyledHeaderActionBar>
     <TooltipWrapper content="Mute Channel" direction="bottom">
       <StyledIconButton>
@@ -78,3 +78,5 @@ export default ({ isMembersListActive, onMembersToggleClick }) => (
     </TooltipWrapper>
   </StyledHeaderActionBar>
 );
+
+export default HeaderActionBar;

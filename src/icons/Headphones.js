@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const HeadphonesIcon = ({ className }) => (
   <svg className={className} width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <rect width="24" height="24" />
@@ -11,3 +11,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default HeadphonesIcon;

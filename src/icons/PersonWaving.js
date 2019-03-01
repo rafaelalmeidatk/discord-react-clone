@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const PersonWavingIcon = ({ className }) => (
   <svg name="PersonWaving" className={className} width="16" height="16" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <path
@@ -13,3 +13,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default PersonWavingIcon;

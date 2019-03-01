@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const PeopleIcon = ({ className }) => (
   <svg name="People" className={className} width="16" height="16" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <polygon points="0 0 24 0 24 24 0 24" />
@@ -11,3 +11,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default PeopleIcon;

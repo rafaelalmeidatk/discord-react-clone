@@ -143,7 +143,7 @@ const StyledMessageInput = styled.input`
   height: 36px;
 `;
 
-export default ({ member, guildRolesList }) => (
+const MemberCard = ({ member, guildRolesList }) => (
   <StyledMemberCard isPlaying={!!member.activity}>
     <div className="header">
       <div className="user-data">
@@ -186,3 +186,5 @@ export default ({ member, guildRolesList }) => (
     </div>
   </StyledMemberCard>
 );
+
+export default MemberCard;

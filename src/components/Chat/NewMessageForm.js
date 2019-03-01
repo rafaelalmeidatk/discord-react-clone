@@ -34,7 +34,7 @@ const StyledTextarea = styled.textarea`
   width: 100%;
 `;
 
-export default ({ channelName, isPrivate }) => (
+const NewMessageForm = ({ channelName, isPrivate }) => (
   <StyledNewMessageForm>
     <AttachButton />
 
@@ -45,3 +45,5 @@ export default ({ channelName, isPrivate }) => (
     <NewMessageButtons />
   </StyledNewMessageForm>
 );
+
+export default NewMessageForm;

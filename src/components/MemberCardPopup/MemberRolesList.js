@@ -39,7 +39,7 @@ const StyledRole = styled.li`
   }
 `;
 
-export default ({ rolesList, memberRoles }) => (
+const MemberRolesList = ({ rolesList, memberRoles }) => (
   <StyledRolesList>
     {memberRoles.map(roleId => {
       const role = rolesList[roleId];
@@ -53,3 +53,5 @@ export default ({ rolesList, memberRoles }) => (
     })}
   </StyledRolesList>
 );
+
+export default MemberRolesList;

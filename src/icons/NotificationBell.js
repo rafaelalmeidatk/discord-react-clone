@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const NotificationBellIcon = ({ className }) => (
   <svg name="NotificationBell" className={className} width="16" height="16" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <path
@@ -11,3 +11,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default NotificationBellIcon;

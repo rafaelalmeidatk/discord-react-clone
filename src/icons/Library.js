@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const LibraryIcon = ({ className }) => (
   <svg name="Library" className={className} width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <path
@@ -10,3 +10,5 @@ export default ({ className }) => (
     </g>
   </svg>
 );
+
+export default LibraryIcon;

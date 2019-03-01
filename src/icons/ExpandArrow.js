@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const ExpandArrowIcon = ({ className }) => (
   <svg className={className} width="12" height="12" viewBox="0 0 24 24">
     <path
       fill="none"
@@ -12,3 +12,5 @@ export default ({ className }) => (
     />
   </svg>
 );
+
+export default ExpandArrowIcon;

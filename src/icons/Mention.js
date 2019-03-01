@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ className }) => (
+const MentionIcon = ({ className }) => (
   <svg name="Mention" className={className} width="16" height="16" viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -9,3 +9,5 @@ export default ({ className }) => (
     />
   </svg>
 );
+
+export default MentionIcon;
