@@ -2,6 +2,8 @@
 
 ![Preview](https://i.imgur.com/0UpCir4.gif)
 
+Demo: [https://rafaelalmeidatk.github.io/discord-react-clone/](https://rafaelalmeidatk.github.io/discord-react-clone/)
+
 This project is a front-end replication of Discord's app made with React. This is not a full replication so I added the most used parts of the app.
 
 The main objective of this project was to learn React hooks and `styled-components` (so aside from normalize.css, this is the only library utilized).
