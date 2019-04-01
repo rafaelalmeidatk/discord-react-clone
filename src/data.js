@@ -125,8 +125,7 @@ export default {
       id: 1111,
       name: 'Reactiflux',
       initials: 'R',
-      icon:
-        'https://cdn.discordapp.com/icons/102860784329052160/109fd014c718f40110c4a182f105ca71.webp',
+      icon: 'https://i.imgur.com/EOASYoR.png',
       welcomeChannelId: 111124,
       categories: [
         {
@@ -239,8 +238,7 @@ export default {
       id: 2222,
       name: 'MonoGame Discord',
       initials: 'MD',
-      icon:
-        'https://cdn.discordapp.com/icons/355231098122272778/38071c8ba123ca294d769e5e4f7e1318.webp',
+      icon: 'https://i.imgur.com/13MolaQ.png',
       welcomeChannelId: 222224,
       categories: [
         {
@@ -338,8 +336,7 @@ export default {
       id: 3333,
       name: 'Terraria',
       initials: 'T',
-      icon:
-        'https://cdn.discordapp.com/icons/251072485095636994/1c0891700d01c1eb2fe8c75a74765203.png',
+      icon: 'https://i.imgur.com/w0qLXk7.png',
       welcomeChannelId: 333323,
       categories: [
         {
@@ -420,8 +417,7 @@ export default {
       id: 4444,
       name: 'Rocket League',
       initials: 'RL',
-      icon:
-        'https://cdn.discordapp.com/icons/152517096104919042/383e3ca0fd88b170be2f0e341562d013.png',
+      icon: 'https://i.imgur.com/WiifV40.png',
       welcomeChannelId: 444423,
       categories: [
         {
@@ -500,8 +496,7 @@ export default {
       id: 5555,
       name: 'Apex Legends',
       initials: 'AL',
-      icon:
-        'https://cdn.discordapp.com/icons/541484311354933258/b8fc0f55e75911e45fb3348eb510fa6f.png?',
+      icon: 'https://i.imgur.com/X4ypv4K.png',
       welcomeChannelId: 555523,
       categories: [
         {
