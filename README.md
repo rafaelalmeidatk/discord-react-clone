@@ -4,7 +4,7 @@
 
 This project is a front-end replication of Discord's app made with React. This is not a full replication so I added the most used parts of the app.
 
-The main objective of this project was to learn `styled-components` and hooks so this is the only library utilized (aside from `normalize.css`).
+The main objective of this project was to learn React hooks and `styled-components` (so aside from normalize.css, this is the only library utilized).
 
 Some observations:
 * The styled scrollbars only work on webkit-based browsers
